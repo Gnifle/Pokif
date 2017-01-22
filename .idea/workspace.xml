@@ -1,11 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="4cda9e9e-b6ba-4a95-a2c4-8e8257ccbf31" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/web.config" afterPath="$PROJECT_DIR$/public/web.config" />
-    </list>
+    <list default="true" id="4cda9e9e-b6ba-4a95-a2c4-8e8257ccbf31" name="Default" comment="" />
     <ignored path="pokif.iws" />
     <ignored path=".idea/workspace.xml" />
     <ignored path=".idea/dataSources.local.xml" />
@@ -552,7 +548,7 @@
       <workItem from="1484861688943" duration="783000" />
       <workItem from="1484896022554" duration="649000" />
       <workItem from="1484922085414" duration="6997000" />
-      <workItem from="1485099068716" duration="809000" />
+      <workItem from="1485099068716" duration="1001000" />
     </task>
     <servers />
   </component>
@@ -580,7 +576,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="24078000" />
+    <option name="totallyTimeSpent" value="24270000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="754" extended-state="6" />

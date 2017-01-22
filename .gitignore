@@ -1,5 +1,5 @@
 ### Laravel ###
-vendor/
+#vendor/
 node_modules/
 
 # Laravel 4 specific
@@ -17,3 +17,4 @@ storage/*.key
 .rocketeer/
 
 public/web.config_original
+public/web.config_modified
