@@ -66,12 +66,6 @@
         </style>
     </head>
     <body>
-        <?php
-            $pokemon_seed         = file_get_contents( base_path() . '/resources/assets/json/pokemon_seed.json' );
-            $pokemon_species_seed = file_get_contents( base_path() . '/resources/assets/json/pokemon_species_seed.json' );
-            $seed                 = (object) array_merge( (array) json_decode( $pokemon_seed ), (array) json_decode( $pokemon_species_seed ) );
-            print_r( $seed->id );
-        ?>
         <div class="flex-center position-ref full-height">
             @if (Route::has('login'))
                 <div class="top-right links">

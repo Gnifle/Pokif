@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 
-class PokifTableSeeder extends Seeder {
+class PokifPokemonTableSeeder extends Seeder {
 	
 	public function run() {
 		
