@@ -18,3 +18,6 @@ storage/*.key
 
 public/web.config_original
 public/web.config_modified
+
+.idea
+.idea/
