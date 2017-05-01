@@ -11,10 +11,20 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get( '/', function() {
+	
+	return View::make( 'pages.home' );
+} );
 
-Route::get('home/{id}', function() {
-	return view('welcome');
-});
+Route::get( '/tools', function() {
+	
+	return View::make( 'pages.tools' );
+} );
+
+Route::get( '/tools/importer', function() {
+	
+	return View::make( 'pages.tools.importer' );
+} );
+
+Route::get( '/tools/importer/pokemon/{number}', 'PokemonController@show' );
+

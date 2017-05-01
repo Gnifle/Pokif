@@ -12,7 +12,7 @@ return [
     | any other location as required by the application or its packages.
     */
 
-    'name' => 'Laravel',
+    'name' => 'Pokif',
 
     /*
     |--------------------------------------------------------------------------
@@ -38,7 +38,7 @@ return [
     |
     */
 
-    'debug' => env('APP_DEBUG', false),
+    'debug' => env('APP_DEBUG', true),
 
     /*
     |--------------------------------------------------------------------------
@@ -51,7 +51,7 @@ return [
     |
     */
 
-    'url' => env('APP_URL', 'http://localhost'),
+    'url' => env('APP_URL', 'http://pokif.dev:8000'),
 
     /*
     |--------------------------------------------------------------------------
@@ -163,6 +163,7 @@ return [
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
         'Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider',
+	    Collective\Html\HtmlServiceProvider::class,
 
         /*
          * Package Service Providers...
@@ -226,6 +227,8 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
+        'Form' => Collective\Html\FormFacade::class,
+        'Html' => Collective\Html\HtmlFacade::class,
 
     ],
 
