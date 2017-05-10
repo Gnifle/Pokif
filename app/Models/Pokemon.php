@@ -2,53 +2,66 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 use App\Traits\Sluggable;
-use DB;
 
 class Pokemon extends Model {
 	
 	use Sluggable;
 	
+	/**
+	 * @var string
+	 */
 	protected $table = 'pokemon';
 	
+	/**
+	 * @var string
+	 */
 	protected $primaryKey = 'number';
 	
+	/**
+	 * @var bool
+	 */
 	public $incrementing = false;
 	
-	protected $number;
-	
-	protected $name;
+	/**
+	 * @var array
+	 */
+	protected $fillable = [ 'number' ];
 	
 	/**
-	 * @return mixed
+	 * Returns the number of the Pokemon in the dex
+	 *
+	 * @return int The number of the Pokemon in the dex
+	 */
+	public function getNumber() {
+		
+		return $this->number;
+	}
+	
+	/**
+	 * Returns the raw name of the Pokemon,
+	 *
+	 * @return string The name of the Pokemon
 	 */
 	public function getName() {
 		
 		return $this->name;
 	}
 	
-	public function __construct( $pokemon_number ) {
-		
-		$pokemonData = $this->loadPokemonData( $pokemon_number );
-		
-		$this->name = $pokemonData->name;
-	}
-	
 	/**
-	 * Loads the Pokemon data from the database using Eloquent.
+	 * Returns a machine-friendly slug based on the Pokemons name.
 	 *
-	 * @param $pokemon_number The unique number of the Pokemon to retrieve data from.
-	 *
-	 * @return Collection List og data for the requested Pokemon.
+	 * @return string The slug of the Pokemon
 	 */
-	private function loadPokemonData( $pokemon_number ) {
+	public function getSlug() {
 		
-		$pokemonData = DB::table( 'pokemon' )->where( 'number', '=', $pokemon_number )->take( 1 )->get();
+		if( ! $this->slug ) {
+			$this->generateSlug( $this->name );
+			$this->save();
+		}
 		
-		return $pokemonData[0];
-		
+		return $this->slug;
 	}
 	
 }

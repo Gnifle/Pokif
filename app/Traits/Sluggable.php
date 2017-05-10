@@ -18,19 +18,13 @@ trait Sluggable {
 	protected $slug;
 	
 	/**
-	 * @return string The slug for the Sluggable
+	 * Generates a machine-friendly slug based on the Pokemons name.
+	 *
+	 * @param string $name The name of the Pokemon whose slug to be set.
 	 */
-	public function getSlug() {
+	public function generateSlug( $name ) {
 		
-		return $this->slug;
-	}
-	
-	/**
-	 * @param string $entry The slug to be set
-	 */
-	public function generateSlug( $entry ) {
-		
-		$this->slug = str_slug( $entry, Config::get( 'constants.URL_SEPARATOR' ) );
+		$this->slug = str_slug( $name, Config::get( 'constants.URL_SEPARATOR' ) );
 	}
 	
 }

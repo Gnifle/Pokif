@@ -56,7 +56,7 @@ class PokemonFactory {
 			return $this->pokemons[ $pokemon_number ];
 		}
 		
-		return $this->pokemons[ $pokemon_number ] = new Pokemon( $pokemon_number );
+		return $this->pokemons[ $pokemon_number ] = new Pokemon( [ 'number', $pokemon_number ] );
 	}
 	
 	/**

@@ -83,6 +83,25 @@ class CreatePokifTables extends Migration {
 			
 		} );
 		
+		Schema::create( 'pokedex', function( Blueprint $table ) {
+			
+			$table->increments( 'id' );
+			$table->integer( 'key' )->unique();
+			$table->string( 'slug' )->unique();
+			$table->string( 'name' );
+			
+		} );
+		
+		Schema::create( 'pokedex_entries', function( Blueprint $table ) {
+			
+			$table->increments( 'id' );
+			$table->integer( 'pokemon_number' );
+			$table->foreign( 'pokemon_number' )->references( 'number' )->on( 'pokemon' )->onDelete( 'cascade' );
+			$table->integer( 'pokedex_key' );
+			$table->foreign( 'pokedex_key' )->references( 'key' )->on( 'pokedex' )->onDelete( 'cascade' );
+			
+		} );
+		
 	}
 	
 	/**
@@ -91,6 +110,13 @@ class CreatePokifTables extends Migration {
 	 * @return void
 	 */
 	public function down() {
+		
+		Schema::dropIfExists( 'pokedex_entries' );
+		Schema::dropIfExists( 'pokedex' );
+		Schema::dropIfExists( 'pokemon_names' );
+		Schema::dropIfExists( 'ability_names' );
+		Schema::dropIfExists( 'pokemon_abilities' );
+		Schema::dropIfExists( 'egg_group' );
 		Schema::dropIfExists( 'pokemon' );
 		Schema::dropIfExists( 'ability' );
 	}
