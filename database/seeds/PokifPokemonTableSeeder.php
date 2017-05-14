@@ -12,8 +12,8 @@ class PokifPokemonTableSeeder extends Seeder {
 		
 		DB::table( 'pokemon' )->delete();
 		
-		$pokemon = array(
-			array(
+		$pokemon = [
+			[
 				'number'                 => $seed->id,
 				'name'                   => $seed->names[ 0 ]->name,
 				'slug'                   => $seed->name,
@@ -32,8 +32,8 @@ class PokifPokemonTableSeeder extends Seeder {
 				'has_varieties'          => count( $seed->varieties > 1 ),
 				'created_at'             => new DateTime,
 				'updated_at'             => new DateTime,
-			),
-		);
+			],
+		];
 		
 		DB::table( 'pokemon' )->insert( $pokemon );
 		

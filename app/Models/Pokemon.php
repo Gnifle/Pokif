@@ -30,6 +30,14 @@ class Pokemon extends Model {
 	protected $fillable = [ 'number' ];
 	
 	/**
+	 * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+	 */
+	public function pokedex() {
+		
+		return $this->belongsToMany( 'App\Models\Pokedex', 'pokedex_entries', 'pokemon_number', 'pokedex_key' );
+	}
+	
+	/**
 	 * Returns the number of the Pokemon in the dex
 	 *
 	 * @return int The number of the Pokemon in the dex

@@ -85,7 +85,6 @@ class CreatePokifTables extends Migration {
 		
 		Schema::create( 'pokedex', function( Blueprint $table ) {
 			
-			$table->increments( 'id' );
 			$table->integer( 'key' )->unique();
 			$table->string( 'slug' )->unique();
 			$table->string( 'name' );
