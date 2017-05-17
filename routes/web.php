@@ -18,7 +18,7 @@ Route::get( '/', function() {
 
 Route::get( '/pokedex', 'PokedexController@index' );
 
-Route::get( '/pokedex/{dex}', 'PokedexController@index' );
+Route::get( '/pokedex/{generation}', 'PokedexController@index' );
 
 Route::get( '/pokedex/{dex}/{pokemon}', 'PokemonController@show' );
 

@@ -16,7 +16,7 @@ class PokedexController extends Controller {
 		
 		$pokedex = Pokedex::byGeneration( $generation );
 		
-		if( $pokedex === false ) {
+		if( $pokedex === false || $pokedex === NULL ) {
 			return view( 'errors.pokedex.404' )->with( 'message', 'Pokedex not found' );
 		}
 		
@@ -27,5 +27,7 @@ class PokedexController extends Controller {
 			[ 'pokedex' => $pokedex, 'pokemons' => $pokedex_entries ]
 		);
 	}
+	
+	
 	
 }

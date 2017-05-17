@@ -1,23 +1,15 @@
 <?php
 
-/**
- * Created by PhpStorm.
- * User: Daniel Gnifle
- * Date: 1/15/2017
- * Time: 13:52
- */
-class GnifleTest extends PHPUnit_Framework_TestCase {
-
+//class GnifleTest extends PHPUnit_Framework_TestCase {
+class GnifleTest extends TestCase {
+	
 	public function testLetsGo() {
-
+		
+		$this->visit( 'http://pokif.dev/pokedex/7/157' )
+		     ->seePageIs( 'http://pokif.dev/pokedex/7/157' );
+		
 		$this->assertTrue( true );
-
+		
 	}
-
-	public function testWooo() {
-
-		$this->assertTrue( true );
-
-	}
-
+	
 }
