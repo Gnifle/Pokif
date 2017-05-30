@@ -23,7 +23,8 @@ class PokedexController extends Controller {
 		$pokedex_entries = $pokedex->pokemon;
 		
 		return view(
-			'pages.pokedex',
+//			'pages.pokedex',
+			'pages.tools.importer.pokemon',
 			[ 'pokedex' => $pokedex, 'pokemons' => $pokedex_entries ]
 		);
 	}

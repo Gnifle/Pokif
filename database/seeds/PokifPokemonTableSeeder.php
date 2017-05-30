@@ -6,6 +6,8 @@ class PokifPokemonTableSeeder extends Seeder {
 	
 	public function run() {
 		
+		
+		
 		$pokemon_seed         = file_get_contents( base_path() . '/resources/assets/json/pokemon_seed.json' );
 		$pokemon_species_seed = file_get_contents( base_path() . '/resources/assets/json/pokemon_species_seed.json' );
 		$seed                 = (object) array_merge( (array) json_decode( $pokemon_seed ), (array) json_decode( $pokemon_species_seed ) );
@@ -36,6 +38,71 @@ class PokifPokemonTableSeeder extends Seeder {
 		];
 		
 		DB::table( 'pokemon' )->insert( $pokemon );
+		
+		$pokedex = [
+			[
+				'key' => 1,
+				'slug' => 'kanto-dex',
+				'name' => 'Kanto Dex',
+			],
+			[
+				'key' => 2,
+				'slug' => 'johto-dex',
+				'name' => 'Johto Dex',
+			],
+			[
+				'key' => 3,
+				'slug' => 'hoenn-dex',
+				'name' => 'Hoenn Dex',
+			],
+			[
+				'key' => 4,
+				'slug' => 'sinnoh-dex',
+				'name' => 'Sinnoh Dex',
+			],
+			[
+				'key' => 5,
+				'slug' => 'unova-dex',
+				'name' => 'Unova Dex',
+			],
+			[
+				'key' => 6,
+				'slug' => 'kalos-dex',
+				'name' => 'Kalos Dex',
+			],
+			[
+				'key' => 7,
+				'slug' => 'alola-dex',
+				'name' => 'Alola Dex',
+			],
+			[
+				'key' => 11,
+				'slug' => 'kanto-dex',
+				'name' => 'Kanto Dex',
+			],
+			[
+				'key' => 21,
+				'slug' => 'johto-dex',
+				'name' => 'Johto Dex',
+			],
+			[
+				'key' => 22,
+				'slug' => 'johto-enhanced-dex',
+				'name' => 'Johto Enhanced Dex',
+			],
+			[
+				'key' => 31,
+				'slug' => 'hoenn-dex',
+				'name' => 'Hoenn Dex',
+			],
+			[
+				'key' => 32,
+				'slug' => 'hoenn-enhanced-dex',
+				'name' => 'Hoenn Enhanced Dex',
+			],
+		];
+		
+		DB::table( 'pokedex' )->insert( $pokedex );
 		
 	}
 	

@@ -72,7 +72,7 @@ class PokemonController extends Controller {
 			
 			if( $pokemon !== NULL && $pokemon_slug = $pokemon->getSlug() ) {
 				
-				return Redirect::to( "/pokedex/{$dex}/" . $pokemon_slug );
+				return Redirect::to( "/pokedex/{$dex}/{$pokemon_slug}" );
 				
 			}
 			
