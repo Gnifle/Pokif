@@ -756,6 +756,8 @@ class ComposerStaticInitbd9647a0b906dd382c70b728abae10b1
         'PHP_Token_XOR_EQUAL' => __DIR__ . '/..' . '/phpunit/php-token-stream/src/Token.php',
         'PHP_Token_YIELD' => __DIR__ . '/..' . '/phpunit/php-token-stream/src/Token.php',
         'PHP_Token_YIELD_FROM' => __DIR__ . '/..' . '/phpunit/php-token-stream/src/Token.php',
+        'PokedexEntriesTableSeeder' => __DIR__ . '/../..' . '/database/seeds/PokedexEntriesTableSeeder.php',
+        'PokedexTableSeeder' => __DIR__ . '/../..' . '/database/seeds/PokedexTableSeeder.php',
         'PokifAbilityTableSeeder' => __DIR__ . '/../..' . '/database/seeds/PokifAbilityTableSeeder.php',
         'PokifPokemonTableSeeder' => __DIR__ . '/../..' . '/database/seeds/PokifPokemonTableSeeder.php',
         'SebastianBergmann\\CodeCoverage\\CodeCoverage' => __DIR__ . '/..' . '/phpunit/php-code-coverage/src/CodeCoverage.php',

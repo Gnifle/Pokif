@@ -132,13 +132,13 @@ class CreatePokifTables extends Migration {
 	public function down() {
 		
 		Schema::dropIfExists( 'pokedex_entries' );
-		Schema::dropIfExists( 'pokedex' );
 		Schema::dropIfExists( 'pokemon_names' );
 		Schema::dropIfExists( 'ability_names' );
 		Schema::dropIfExists( 'pokemon_abilities' );
 		Schema::dropIfExists( 'pokemon_stats' );
 		Schema::dropIfExists( 'egg_group' );
 		Schema::dropIfExists( 'pokemon' );
+		Schema::dropIfExists( 'pokedex' );
 		Schema::dropIfExists( 'ability' );
 		Schema::dropIfExists( 'stats' );
 	}

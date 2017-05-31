@@ -458,6 +458,8 @@ return array(
     'PHP_Token_XOR_EQUAL' => $vendorDir . '/phpunit/php-token-stream/src/Token.php',
     'PHP_Token_YIELD' => $vendorDir . '/phpunit/php-token-stream/src/Token.php',
     'PHP_Token_YIELD_FROM' => $vendorDir . '/phpunit/php-token-stream/src/Token.php',
+    'PokedexEntriesTableSeeder' => $baseDir . '/database/seeds/PokedexEntriesTableSeeder.php',
+    'PokedexTableSeeder' => $baseDir . '/database/seeds/PokedexTableSeeder.php',
     'PokifAbilityTableSeeder' => $baseDir . '/database/seeds/PokifAbilityTableSeeder.php',
     'PokifPokemonTableSeeder' => $baseDir . '/database/seeds/PokifPokemonTableSeeder.php',
     'SebastianBergmann\\CodeCoverage\\CodeCoverage' => $vendorDir . '/phpunit/php-code-coverage/src/CodeCoverage.php',
