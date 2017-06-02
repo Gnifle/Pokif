@@ -17,6 +17,7 @@ class ComposerStaticInitbd9647a0b906dd382c70b728abae10b1
         'f0906e6318348a765ffb6eb24e0d0938' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Foundation/helpers.php',
         '58571171fd5812e6e447dce228f52f4d' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Support/helpers.php',
         'f18cc91337d49233e5754e93f3ed9ec3' => __DIR__ . '/..' . '/laravelcollective/html/src/helpers.php',
+        'b4e3f29b106af37a2bb239f73cdf68c7' => __DIR__ . '/../..' . '/app/helpers.php',
     );
 
     public static $prefixLengthsPsr4 = array (
@@ -758,8 +759,10 @@ class ComposerStaticInitbd9647a0b906dd382c70b728abae10b1
         'PHP_Token_YIELD_FROM' => __DIR__ . '/..' . '/phpunit/php-token-stream/src/Token.php',
         'PokedexEntriesTableSeeder' => __DIR__ . '/../..' . '/database/seeds/PokedexEntriesTableSeeder.php',
         'PokedexTableSeeder' => __DIR__ . '/../..' . '/database/seeds/PokedexTableSeeder.php',
+        'PokemonDexNumbersTableSeeder' => __DIR__ . '/../..' . '/database/seeds/PokemonDexNumbersTableSeeder.php',
         'PokifAbilityTableSeeder' => __DIR__ . '/../..' . '/database/seeds/PokifAbilityTableSeeder.php',
         'PokifPokemonTableSeeder' => __DIR__ . '/../..' . '/database/seeds/PokifPokemonTableSeeder.php',
+        'RegionsTableSeeder' => __DIR__ . '/../..' . '/database/seeds/RegionsTableSeeder.php',
         'SebastianBergmann\\CodeCoverage\\CodeCoverage' => __DIR__ . '/..' . '/phpunit/php-code-coverage/src/CodeCoverage.php',
         'SebastianBergmann\\CodeCoverage\\CoveredCodeNotExecutedException' => __DIR__ . '/..' . '/phpunit/php-code-coverage/src/Exception/CoveredCodeNotExecutedException.php',
         'SebastianBergmann\\CodeCoverage\\Driver\\Driver' => __DIR__ . '/..' . '/phpunit/php-code-coverage/src/Driver/Driver.php',
