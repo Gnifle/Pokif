@@ -1,13 +1,14 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use App\Helpers\PokifCSVParser;
 
 class GenerationNamesSeeder extends Seeder {
 	
 	public function run() {
 		
-		$generation_name_list = pokif_csv_to_seed( 'generation_names' );
+		$parser = new PokifCSVParser( 'generation_names' );
 		
-		DB::table( 'generation_names' )->insert( $generation_name_list );
+		DB::table( 'generation_names' )->insert( $parser->data );
 	}
 }

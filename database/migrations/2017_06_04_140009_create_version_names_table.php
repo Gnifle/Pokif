@@ -15,6 +15,7 @@ class CreateVersionNamesTable extends Migration {
 		
 		Schema::create( 'version_names', function( Blueprint $table ) {
 			
+			$table->increments( 'id' );
 			$table->integer( 'version_id' );
 			$table->foreign( 'version_id' )->references( 'id' )->on( 'versions' )->onDelete( 'cascade' );
 			$table->integer( 'local_language_id' );

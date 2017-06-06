@@ -15,6 +15,7 @@ class CreatePokemonMoveMethodProseTable extends Migration {
 		
 		Schema::create( 'pokemon_move_method_prose', function( Blueprint $table ) {
 			
+			$table->increments( 'id' );
 			$table->integer( 'pokemon_move_method_id' );
 			$table->foreign( 'pokemon_move_method_id' )->references( 'id' )->on( 'pokemon_move_methods' )->onDelete( 'cascade' );
 			$table->integer( 'local_language_id' );

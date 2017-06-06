@@ -1,14 +1,15 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use App\Helpers\PokifCSVParser;
 
 class RegionsTableSeeder extends Seeder {
 	
 	public function run() {
 		
-		$regions_list = pokif_csv_to_seed( 'regions' );
+		$parser = new PokifCSVParser( 'regions' );
 		
-		DB::table( 'regions' )->insert( $regions_list );
+		DB::table( 'regions' )->insert( $parser->data );
 		
 	}
 }

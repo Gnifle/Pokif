@@ -15,6 +15,7 @@ class CreateVersionGroupPokemonMoveMethodsTable extends Migration {
 		
 		Schema::create( 'version_group_pokemon_move_methods', function( Blueprint $table ) {
 			
+			$table->increments( 'id' );
 			$table->integer( 'version_group_id' );
 			$table->foreign( 'version_group_id', 'vg_pokemon_move_methods_vg_id_foreign' )->references( 'id' )->on( 'version_groups' )->onDelete( 'cascade' );
 			$table->integer( 'pokemon_move_method_id' );

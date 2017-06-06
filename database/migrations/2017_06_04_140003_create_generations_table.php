@@ -15,7 +15,7 @@ class CreateGenerationsTable extends Migration {
 		
 		Schema::create( 'generations', function( Blueprint $table ) {
 			
-			$table->integer( 'id' )->unique();
+			$table->integer( 'id' )->primary();
 			$table->integer( 'main_region_id' );
 			$table->string( 'identifier' );
 		} );

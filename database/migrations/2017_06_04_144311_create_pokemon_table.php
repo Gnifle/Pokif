@@ -15,7 +15,7 @@ class CreatePokemonTable extends Migration {
 		
 		Schema::create( 'pokemon', function( Blueprint $table ) {
 			
-			$table->integer( 'id' )->unique();
+			$table->integer( 'id' )->primary();
 			$table->string( 'identifier' )->unique();
 			$table->integer( 'species_id' );
 			$table->integer( 'height' );

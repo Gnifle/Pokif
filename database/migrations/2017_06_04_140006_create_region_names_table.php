@@ -15,6 +15,7 @@ class CreateRegionNamesTable extends Migration {
 		
 		Schema::create( 'region_names', function( Blueprint $table ) {
 			
+			$table->increments( 'id' );
 			$table->integer( 'region_id' );
 			$table->foreign( 'region_id' )->references( 'id' )->on( 'regions' )->onDelete( 'cascade' );
 			$table->integer( 'local_language_id' );

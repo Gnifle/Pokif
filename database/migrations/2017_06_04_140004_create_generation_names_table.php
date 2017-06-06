@@ -15,6 +15,7 @@ class CreateGenerationNamesTable extends Migration {
 		
 		Schema::create( 'generation_names', function( Blueprint $table ) {
 			
+			$table->increments( 'id' );
 			$table->integer( 'generation_id' );
 			$table->foreign( 'generation_id' )->references( 'id' )->on( 'generations' )->onDelete( 'cascade' );
 			$table->integer( 'local_language_id' );

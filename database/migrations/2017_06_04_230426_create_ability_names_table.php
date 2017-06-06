@@ -15,6 +15,7 @@ class CreateAbilityNamesTable extends Migration {
 		
 		Schema::create( 'ability_names', function( Blueprint $table ) {
 			
+			$table->increments( 'id' );
 			$table->integer( 'ability_id' );
 			$table->foreign( 'ability_id' )->references( 'id' )->on( 'abilities' )->onDelete( 'cascade' );
 			$table->integer( 'local_language_id' );

@@ -15,6 +15,7 @@ class CreateLanguageNamesTable extends Migration {
 		
 		Schema::create( 'language_names', function( Blueprint $table ) {
 			
+			$table->increments( 'id' );
 			$table->integer( 'language_id' );
 			$table->foreign( 'language_id' )->references( 'id' )->on( 'languages' )->onDelete( 'cascade' );
 			$table->integer('local_language_id');

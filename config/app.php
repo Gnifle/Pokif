@@ -164,6 +164,7 @@ return [
         Illuminate\View\ViewServiceProvider::class,
         'Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider',
 	    Collective\Html\HtmlServiceProvider::class,
+	    
 
         /*
          * Package Service Providers...

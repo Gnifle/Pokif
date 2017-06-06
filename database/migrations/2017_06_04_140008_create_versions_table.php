@@ -15,7 +15,7 @@ class CreateVersionsTable extends Migration {
 		
 		Schema::create( 'versions', function( Blueprint $table ) {
 			
-			$table->integer( 'id' )->unique();
+			$table->integer( 'id' )->primary();
 			$table->integer( 'version_group_id' );
 			$table->foreign( 'version_group_id' )->references( 'id' )->on( 'version_groups' )->onDelete( 'cascade' );
 			$table->string( 'identifier' );

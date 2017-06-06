@@ -1,9 +1,69 @@
 <?php
 
+use App\Helpers\PokifCSVParser;
+
+/**
+ * @deprecated
+ *
+ * @param       $file_name
+ * @param bool  $nullify_empty
+ * @param array $nullify_columns
+ *
+ * @return array
+ */
+function pokif_csv_to_seed( $file_name, $nullify_empty = false, $nullify_columns = [] ) {
+	
+	$csv = new PokifCSVParser( base_path() . "/resources/assets/csv/{$file_name}.csv" );
+	
+	return $csv->data;
+}
+
+/**
+ * Takes a list of seeds and sets all fields to NULL where the value is an empty string.
+ *
+ * @deprecated
+ *
+ * @param array $seed_list Nested array containing the seed for the database with fields to be nullified if empty
+ *                         strings.
+ * @param array $columns   (Optional) List of columns to only perform nullification on
+ *
+ * @return array The modified, nested list of seeds.
+ */
+function pokif_seed_list_null_empty_strings( $seed_list, $columns = [] ) {
+	
+	foreach( $seed_list as $index => $seed ) {
+		
+		if( $columns ) {
+			
+			foreach( $columns as $column ) {
+				
+				if( '' === $seed_list[ $index ][ $column ] ) {
+					
+					$seed_list[ $index ][ $column ] = NULL;
+				}
+			}
+			
+		} else {
+			
+			foreach( $seed_list[ $index ] as $column => $value ) {
+				
+				if( '' === $seed_list[ $index ][ $column ] ) {
+					
+					$seed_list[ $index ][ $column ] = NULL;
+				}
+			}
+		}
+	}
+	
+	return $seed_list;
+}
+
 /**
  * Parses a CSV to a list of seed arrays.
  *
  * Uses fopen() to open the file, and fgetcsv() to read the CSV lines internally.
+ *
+ * @deprecated
  *
  * @param string $file_name     The Pokif CSV file to parse without extension.
  * @param string $file_mode     See fopen(). Defaults to 'r'.
@@ -15,7 +75,7 @@
  * @return array|bool The list of generated seeds from the CSV file or FALSE if $file_name omitted or opening was
  *                    insuccessful.
  */
-function pokif_csv_to_seed( $file_name, $file_mode = 'r', $csv_length = 0, $csv_delimiter = ',', $csv_enclosure = '', $csv_escape = '\\' ) {
+function pokif_csv_to_seed_old( $file_name, $file_mode = 'r', $csv_length = 0, $csv_delimiter = ',', $csv_enclosure = '', $csv_escape = '\\' ) {
 	
 	if( ! $file_name ) {
 		return false;
@@ -80,6 +140,8 @@ function pokif_csv_to_seed( $file_name, $file_mode = 'r', $csv_length = 0, $csv_
  *
  * All parameters will followingly be passed to pokif_csv_to_seed().
  *
+ * @deprecated
+ *
  * @param string $file_name     The Pokif CSV file to parse without extension.
  * @param string $file_mode     See fopen(). Defaults to 'r'.
  * @param int    $csv_length    See fgetcsv(). Defaults to 0.
@@ -102,16 +164,16 @@ function pokif_csv_to_seed_replace_double_newline( $file_name, $file_mode = 'r',
 	
 	file_put_contents( base_path() . "/resources/assets/csv/{$file_name}_parsed.csv", str_replace( [
 		PHP_EOL . PHP_EOL,
-//		PHP_EOL,
 	], [
 		' ',
 	], $file_contents ) );
 	
-	return pokif_csv_to_seed( "{$file_name}_parsed", $file_mode, $csv_length, $csv_delimiter, $csv_enclosure, $csv_escape );
+	return pokif_csv_to_seed_old( "{$file_name}_parsed", $file_mode, $csv_length, $csv_delimiter, $csv_enclosure, $csv_escape );
 }
 
 /**
- * Deletes part of a string between a given string beginning and a given string end, the beginning part only included for deletion.
+ * Deletes part of a string between a given string beginning and a given string end, the beginning part only included
+ * for deletion.
  *
  * @param string $beginning The beginning to search for.
  * @param string $end       The end to search for.

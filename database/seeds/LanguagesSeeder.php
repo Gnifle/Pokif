@@ -1,12 +1,15 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use App\Helpers\PokifCSVParser;
 
 class LanguagesSeeder extends Seeder {
 	
 	public function run() {
 		
-		$language_list = pokif_csv_to_seed( 'languages' );
+		$parser = new PokifCSVParser( 'languages' );
+		
+		$language_list = $parser->data;
 		
 		DB::table( 'languages' )->insert( $language_list );
 	}

@@ -10,7 +10,7 @@ class CreatePokemonMoveMethodsTable extends Migration {
 		
 		Schema::create( 'pokemon_move_methods', function( Blueprint $table ) {
 			
-			$table->integer( 'id' )->unique();
+			$table->integer( 'id' )->primary();
 			$table->string( 'identifier' );
 		} );
 	}

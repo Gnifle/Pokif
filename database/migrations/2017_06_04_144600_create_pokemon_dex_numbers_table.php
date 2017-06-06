@@ -15,6 +15,7 @@ class CreatePokemonDexNumbersTable extends Migration {
 		
 		Schema::create( 'pokemon_dex_numbers', function( Blueprint $table ) {
 			
+			$table->increments( 'id' );
 			$table->integer( 'species_id' );
 			$table->integer( 'pokedex_id' );
 			$table->foreign( 'pokedex_id' )->references( 'id' )->on( 'pokedexes' )->onDelete( 'cascade' );

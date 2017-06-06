@@ -1,13 +1,14 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use App\Helpers\PokifCSVParser;
 
 class VersionsSeeder extends Seeder {
 	
 	public function run() {
 		
-		$version_list = pokif_csv_to_seed( 'versions' );
+		$parser = new PokifCSVParser( 'versions' );
 		
-		DB::table( 'versions' )->insert( $version_list );
+		DB::table( 'versions' )->insert( $parser->data );
 	}
 }

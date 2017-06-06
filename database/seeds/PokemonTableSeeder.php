@@ -1,14 +1,15 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use App\Helpers\PokifCSVParser;
 
 class PokemonTableSeeder extends Seeder {
 	
 	public function run() {
 		
-		$pokemon_list = pokif_csv_to_seed( 'pokemon' );
+		$parser = new PokifCSVParser( 'pokemon' );
 		
-		DB::table( 'pokemon' )->insert( $pokemon_list );
+		DB::table( 'pokemon' )->insert( $parser->data );
 	}
 	
 }

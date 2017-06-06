@@ -15,6 +15,7 @@ class CreateAbilityFlavorTextTable extends Migration {
 		
 		Schema::create( 'ability_flavor_text', function( Blueprint $table ) {
 			
+			$table->increments( 'id' );
 			$table->integer( 'ability_id' );
 			$table->foreign( 'ability_id' )->references( 'id' )->on( 'abilities' )->onDelete( 'cascade' );
 			$table->integer( 'version_group_id' );

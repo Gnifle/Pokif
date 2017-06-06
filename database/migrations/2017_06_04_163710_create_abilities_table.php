@@ -15,8 +15,8 @@ class CreateAbilitiesTable extends Migration {
 		
 		Schema::create( 'abilities', function( Blueprint $table ) {
 			
-			$table->integer( 'id' )->unique();
-			$table->string( 'identifier' );
+			$table->integer( 'id' )->primary();
+			$table->string( 'identifier' )->unique();
 			$table->integer( 'generation_id' );
 			$table->foreign( 'generation_id' )->references( 'id' )->on( 'generations' )->onDelete( 'cascade' );
 			$table->boolean( 'is_main_series' );

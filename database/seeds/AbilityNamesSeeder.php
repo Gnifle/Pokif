@@ -1,13 +1,14 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use App\Helpers\PokifCSVParser;
 
 class AbilityNamesSeeder extends Seeder {
 	
 	public function run() {
 		
-		$ability_name_list = pokif_csv_to_seed( 'ability_names' );
+		$parser = new PokifCSVParser( 'ability_names' );
 		
-		DB::table( 'ability_names' )->insert( $ability_name_list );
+		DB::table( 'ability_names' )->insert( $parser->data );
 	}
 }
