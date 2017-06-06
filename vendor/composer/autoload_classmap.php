@@ -7,9 +7,11 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'AbilitiesSeeder' => $baseDir . '/database/seeds/AbilitiesSeeder.php',
+    'AbilityFlavorTextSeeder' => $baseDir . '/database/seeds/AbilityFlavorTextSeeder.php',
     'AbilityNamesSeeder' => $baseDir . '/database/seeds/AbilityNamesSeeder.php',
     'AbilityProseSeeder' => $baseDir . '/database/seeds/AbilityProseSeeder.php',
     'CreateAbilitiesTable' => $baseDir . '/database/migrations/2017_06_04_163710_create_abilities_table.php',
+    'CreateAbilityFlavorTextTable' => $baseDir . '/database/migrations/2017_06_06_102905_create_ability_flavor_text_table.php',
     'CreateAbilityNamesTable' => $baseDir . '/database/migrations/2017_06_04_230426_create_ability_names_table.php',
     'CreateAbilityProseTable' => $baseDir . '/database/migrations/2017_06_04_230859_create_ability_prose_table.php',
     'CreateGenerationNamesTable' => $baseDir . '/database/migrations/2017_06_04_140004_create_generation_names_table.php',

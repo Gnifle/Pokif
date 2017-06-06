@@ -306,9 +306,11 @@ class ComposerStaticInitbd9647a0b906dd382c70b728abae10b1
 
     public static $classMap = array (
         'AbilitiesSeeder' => __DIR__ . '/../..' . '/database/seeds/AbilitiesSeeder.php',
+        'AbilityFlavorTextSeeder' => __DIR__ . '/../..' . '/database/seeds/AbilityFlavorTextSeeder.php',
         'AbilityNamesSeeder' => __DIR__ . '/../..' . '/database/seeds/AbilityNamesSeeder.php',
         'AbilityProseSeeder' => __DIR__ . '/../..' . '/database/seeds/AbilityProseSeeder.php',
         'CreateAbilitiesTable' => __DIR__ . '/../..' . '/database/migrations/2017_06_04_163710_create_abilities_table.php',
+        'CreateAbilityFlavorTextTable' => __DIR__ . '/../..' . '/database/migrations/2017_06_06_102905_create_ability_flavor_text_table.php',
         'CreateAbilityNamesTable' => __DIR__ . '/../..' . '/database/migrations/2017_06_04_230426_create_ability_names_table.php',
         'CreateAbilityProseTable' => __DIR__ . '/../..' . '/database/migrations/2017_06_04_230859_create_ability_prose_table.php',
         'CreateGenerationNamesTable' => __DIR__ . '/../..' . '/database/migrations/2017_06_04_140004_create_generation_names_table.php',

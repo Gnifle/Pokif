@@ -102,6 +102,7 @@ function pokif_csv_to_seed_replace_double_newline( $file_name, $file_mode = 'r',
 	
 	file_put_contents( base_path() . "/resources/assets/csv/{$file_name}_parsed.csv", str_replace( [
 		PHP_EOL . PHP_EOL,
+//		PHP_EOL,
 	], [
 		' ',
 	], $file_contents ) );

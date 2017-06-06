@@ -36,5 +36,6 @@ class DatabaseSeeder extends Seeder {
 		$this->call( AbilitiesSeeder::class );
 		$this->call( AbilityNamesSeeder::class );
 		$this->call( AbilityProseSeeder::class );
+		$this->call( AbilityFlavorTextSeeder::class );
 	}
 }
