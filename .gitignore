@@ -1,5 +1,6 @@
 ### Laravel ###
-#vendor/
+vendor/
+vendor/*
 node_modules/
 
 # Laravel 4 specific
