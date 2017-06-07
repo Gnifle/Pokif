@@ -39,5 +39,10 @@ class DatabaseSeeder extends Seeder {
 		$this->call( AbilityFlavorTextSeeder::class );
 		$this->call( AbilityChangelogSeeder::class );
 		$this->call( AbilityChangelogProseSeeder::class );
+		
+		$this->call( MoveDamageClassesSeeder::class );
+		$this->call( MoveDamageClassProseSeeder::class );
+		
+		$this->call( StatsSeeder::class );
 	}
 }
