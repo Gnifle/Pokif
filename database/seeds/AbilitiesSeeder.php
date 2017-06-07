@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Seeder;
 use App\Helpers\PokifCSVParser;
+use App\Helpers\PokifSeeder;
 
 class AbilitiesSeeder extends Seeder {
 	
