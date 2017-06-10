@@ -44,5 +44,9 @@ class DatabaseSeeder extends Seeder {
 		$this->call( MoveDamageClassProseSeeder::class );
 		
 		$this->call( StatsSeeder::class );
+		$this->call( StatNamesSeeder::class );
+		
+		$this->call( CharacteristicsSeeder::class );
+		$this->call( CharacteristicTextSeeder::class );
 	}
 }
