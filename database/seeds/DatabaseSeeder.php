@@ -48,5 +48,20 @@ class DatabaseSeeder extends Seeder {
 		
 		$this->call( CharacteristicsSeeder::class );
 		$this->call( CharacteristicTextSeeder::class );
+		
+		$this->call( EggGroupsSeeder::class );
+		$this->call( EggGroupProseSeeder::class );
+		
+		$this->call( GrowthRatesSeeder::class );
+		$this->call( GrowthRateProseSeeder::class );
+		
+		$this->call( ItemPocketsSeeder::class );
+		$this->call( ItemPocketNamesSeeder::class );
+		$this->call( ItemFlingEffectsSeeder::class );
+		$this->call( ItemFlingEffectProseSeeder::class );
+		$this->call( ItemCategoriesSeeder::class );
+		$this->call( ItemCategoryProseSeeder::class );
+		$this->call( ItemsSeeder::class );
+		$this->call( ItemSpritesSeeder::class );
 	}
 }

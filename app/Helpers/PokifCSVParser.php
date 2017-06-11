@@ -72,8 +72,6 @@ class PokifCSVParser extends parseCSV {
 	 */
 	public function nullify_empty_strings( $data = NULL, $nullify_columns = NULL ) {
 		
-//		print_r( gettype( $data ) );
-		
 		if( $data === NULL ) {
 			
 			$data = $this->data;
@@ -83,8 +81,6 @@ class PokifCSVParser extends parseCSV {
 			
 			$nullify_columns = $this->nullify_columns;
 		}
-//		print_r( 'test' );
-//		print_r( $this->data );
 		
 		foreach( $data as $index => $seed ) {
 			
