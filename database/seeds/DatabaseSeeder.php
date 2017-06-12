@@ -63,5 +63,10 @@ class DatabaseSeeder extends Seeder {
 		$this->call( ItemCategoryProseSeeder::class );
 		$this->call( ItemsSeeder::class );
 		$this->call( ItemSpritesSeeder::class );
+		$this->call( ItemNamesSeeder::class );
+		$this->call( ItemProseSeeder::class );
+		$this->call( ItemGameIndicesSeeder::class );
+		$this->call( ItemFlavorTextSeeder::class );
+		$this->call( ItemFlavorSummariesSeeder::class );
 	}
 }
