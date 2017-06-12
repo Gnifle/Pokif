@@ -68,5 +68,8 @@ class DatabaseSeeder extends Seeder {
 		$this->call( ItemGameIndicesSeeder::class );
 		$this->call( ItemFlavorTextSeeder::class );
 		$this->call( ItemFlavorSummariesSeeder::class );
+		$this->call( ItemFlagsSeeder::class );
+		$this->call( ItemFlagProseSeeder::class );
+		$this->call( ItemFlagMapSeeder::class );
 	}
 }
