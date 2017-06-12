@@ -83,5 +83,9 @@ class DatabaseSeeder extends Seeder {
 		$this->call( MoveTargetProseSeeder::class );
 		$this->call( MovesSeeder::class );
 		$this->call( MoveNamesSeeder::class );
+		$this->call( MoveFlavorTextSeeder::class );
+		$this->call( MoveFlavorSummariesSeeder::class );
+		$this->call( MoveBattleStylesSeeder::class );
+		$this->call( MoveBattleStyleProseSeeder::class );
 	}
 }

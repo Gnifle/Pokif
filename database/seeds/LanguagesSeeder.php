@@ -9,8 +9,6 @@ class LanguagesSeeder extends Seeder {
 		
 		$parser = new PokifCSVParser( 'languages' );
 		
-		$language_list = $parser->data;
-		
-		DB::table( 'languages' )->insert( $language_list );
+		DB::table( 'languages' )->insert( $parser->data );
 	}
 }
