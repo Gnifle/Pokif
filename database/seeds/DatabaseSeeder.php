@@ -71,5 +71,17 @@ class DatabaseSeeder extends Seeder {
 		$this->call( ItemFlagsSeeder::class );
 		$this->call( ItemFlagProseSeeder::class );
 		$this->call( ItemFlagMapSeeder::class );
+		
+		$this->call( TypesSeeder::class );
+		$this->call( TypeNamesSeeder::class );
+		$this->call( TypeGameIndicesSeeder::class );
+		$this->call( TypeEfficacySeeder::class );
+		
+		$this->call( MoveEffectsSeeder::class );
+		$this->call( MoveEffectProseSeeder::class );
+		$this->call( MoveTargetsSeeder::class );
+		$this->call( MoveTargetProseSeeder::class );
+		$this->call( MovesSeeder::class );
+		$this->call( MoveNamesSeeder::class );
 	}
 }
