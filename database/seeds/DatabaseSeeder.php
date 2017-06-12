@@ -87,5 +87,19 @@ class DatabaseSeeder extends Seeder {
 		$this->call( MoveFlavorSummariesSeeder::class );
 		$this->call( MoveBattleStylesSeeder::class );
 		$this->call( MoveBattleStyleProseSeeder::class );
+		$this->call( MoveFlagsSeeder::class );
+		$this->call( MoveFlagMapSeeder::class );
+		$this->call( MoveFlagProseSeeder::class );
+		$this->call( MoveMetaAilmentsSeeder::class );
+		$this->call( MoveMetaAilmentNamesSeeder::class );
+		$this->call( MoveMetaCategoriesSeeder::class );
+		$this->call( MoveMetaCategoryProseSeeder::class );
+		$this->call( MoveMetaSeeder::class );
+		$this->call( MoveMetaStatChangesSeeder::class );
+		
+		$this->call( BerryFirmnessSeeder::class );
+		$this->call( BerryFirmnessNamesSeeder::class );
+		$this->call( BerriesSeeder::class );
+		$this->call( BerryFlavorSeeder::class );
 	}
 }
