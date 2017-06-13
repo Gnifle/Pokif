@@ -3,7 +3,7 @@
 use Illuminate\Database\Seeder;
 use App\Helpers\PokifCSVParser;
 
-class PokedexTableSeeder extends Seeder {
+class PokedexesSeeder extends Seeder {
 	
 	public function run() {
 		

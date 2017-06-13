@@ -29,10 +29,6 @@ class DatabaseSeeder extends Seeder {
 		$this->call( PokemonMoveMethodProseSeeder::class );
 		$this->call( VersionGroupPokemonMoveMethodsSeeder::class );
 		
-		$this->call( PokedexTableSeeder::class );
-		$this->call( PokemonTableSeeder::class );
-		$this->call( PokemonDexNumbersTableSeeder::class );
-		
 		$this->call( AbilitiesSeeder::class );
 		$this->call( AbilityNamesSeeder::class );
 		$this->call( AbilityProseSeeder::class );
@@ -108,5 +104,31 @@ class DatabaseSeeder extends Seeder {
 		$this->call( GendersSeeder::class );
 		$this->call( ExperienceSeeder::class );
 		$this->call( MachinesSeeder::class );
+		
+		$this->call( EvolutionChainsSeeder::class );
+		$this->call( EvolutionTriggersSeeder::class );
+		$this->call( EvolutionTriggerProseSeeder::class );
+		
+		$this->call( PokedexesSeeder::class );
+		$this->call( PokedexProseSeeder::class );
+		$this->call( PokedexVersionGroupsSeeder::class );
+		
+		$this->call( LocationsSeeder::class );
+		$this->call( LocationNamesSeeder::class );
+		$this->call( LocationGameIndicesSeeder::class );
+		$this->call( LocationAreasSeeder::class );
+		$this->call( LocationAreaProseSeeder::class );
+		
+		$this->call( PokemonColorsSeeder::class );
+		$this->call( PokemonColorNamesSeeder::class );
+		$this->call( PokemonShapesSeeder::class );
+		$this->call( PokemonShapeProseSeeder::class );
+		$this->call( PokemonHabitatsSeeder::class );
+		$this->call( PokemonHabitatNamesSeeder::class );
+		
+		$this->call( PokemonSpeciesSeeder::class );
+		
+		$this->call( PokemonTableSeeder::class );
+		$this->call( PokemonDexNumbersTableSeeder::class );
 	}
 }
