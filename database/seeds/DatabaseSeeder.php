@@ -101,5 +101,12 @@ class DatabaseSeeder extends Seeder {
 		$this->call( BerryFirmnessNamesSeeder::class );
 		$this->call( BerriesSeeder::class );
 		$this->call( BerryFlavorSeeder::class );
+		
+		$this->call( NaturesSeeder::class );
+		$this->call( NatureBattleStylePreferencesSeeder::class );
+		
+		$this->call( GendersSeeder::class );
+		$this->call( ExperienceSeeder::class );
+		$this->call( MachinesSeeder::class );
 	}
 }
