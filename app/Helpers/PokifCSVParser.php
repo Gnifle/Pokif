@@ -39,15 +39,21 @@ class PokifCSVParser extends parseCSV {
 	 * @param string $file_name       The CSV string or a direct filepath
 	 * @param bool   $nullify         Whether to nullify columns values that are empty strings
 	 * @param array  $nullify_columns List of specific columns to nullify only. Only used if $nullify is set to TRUE.
+	 * @param array  $fields          List of headers
 	 * @param int    $offset          Number of rows to ignore from the beginning of  the data
 	 * @param int    $limit           Limits the number of returned rows to specified amount
 	 * @param string $conditions      Basic SQL-like conditions for row matching
 	 */
-	public function __construct( $file_name = NULL, $nullify = false, $nullify_columns = [], $offset = NULL, $limit = NULL, $conditions = NULL ) {
+	public function __construct( $file_name = NULL, $nullify = false, $nullify_columns = [], $fields = [], $offset = NULL, $limit = NULL, $conditions = NULL ) {
 		
 		if( $file_name !== NULL ) {
 			
 			$this->file_path = base_path() . "/resources/assets/csv/{$file_name}.csv";
+		}
+		
+		if( $fields ) {
+			
+			$this->fields = $fields;
 		}
 		
 		$this->nullify         = $nullify;
