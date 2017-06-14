@@ -127,6 +127,7 @@ class DatabaseSeeder extends Seeder {
 		$this->call( PokemonHabitatNamesSeeder::class );
 		
 		$this->call( PokemonSpeciesSeeder::class );
+		$this->call( PokemonSpeciesNamesSeeder::class );
 		
 		$this->call( PokemonTableSeeder::class );
 		$this->call( PokemonDexNumbersTableSeeder::class );
