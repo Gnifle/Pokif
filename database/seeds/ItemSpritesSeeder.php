@@ -16,7 +16,7 @@ class ItemSpritesSeeder extends Seeder {
 			
 			$sprite_seed = [
 				'item_id' => $item[ 'id' ],
-				'sprites' => Sprite::path( $item[ 'identifier' ], true ),
+				'sprites' => Sprite::itemSpritePath( $item[ 'identifier' ], true ),
 			];
 			
 			$sprite_seed_list[] = $sprite_seed;

@@ -129,11 +129,15 @@ class DatabaseSeeder extends Seeder {
 		$this->call( PokemonSpeciesSeeder::class );
 		$this->call( PokemonSpeciesNamesSeeder::class );
 		$this->call( PokemonSpeciesProseSeeder::class );
-//		This one is 96.000 lines long and has no dependencies. Only enable in production. Holy shit!
-//		Took 306 seconds before throwing an error with too many placeholders in preparedstatement. Batch this shit!
-		$this->call( PokemonSpeciesFlavorTextSeeder::class );
+//		$this->call( PokemonSpeciesFlavorTextSeeder::class ); // Gives about 45 secs extra seeding time with ~33.000 rows. Not crucial.
 		
 		$this->call( PokemonSeeder::class );
+		$this->call( PokemonSpritesSeeder::class );
+		$this->call( PokemonAbilitiesSeeder::class );
 		$this->call( PokemonDexNumbersTableSeeder::class );
+		$this->call( PokemonEggGroupsSeeder::class );
+		$this->call( PokemonEvolutionSeeder::class );
+		$this->call( PokemonFormsSeeder::class );
+		$this->call( PokemonFormSpritesSeeder::class );
 	}
 }
