@@ -139,5 +139,23 @@ class DatabaseSeeder extends Seeder {
 		$this->call( PokemonEvolutionSeeder::class );
 		$this->call( PokemonFormsSeeder::class );
 		$this->call( PokemonFormSpritesSeeder::class );
+		$this->call( PokemonFormNamesSeeder::class );
+		$this->call( PokemonFormGenerationsSeeder::class );
+		$this->call( PokemonGameIndicesSeeder::class );
+		$this->call( PokemonItemsSeeder::class );
+//		$this->call( PokemonMovesSeeder::class ); // This works completely fine, but requires ~2,5 minutes to load (~367.000 lines). Only partially crucial.
+		$this->call( PokemonStatsSeeder::class );
+		$this->call( PokemonTypesSeeder::class );
+		
+		$this->call( EncounterMethodsSeeder::class );
+		$this->call( LocationAreaEncounterRatesSeeder::class );
+		$this->call( EncounterMethodProseSeeder::class );
+		$this->call( EncounterSlotsSeeder::class );
+		$this->call( EncounterConditionsSeeder::class );
+		$this->call( EncounterConditionProseSeeder::class );
+		$this->call( EncountersSeeder::class ); // Also a little big (~47.000 lines, but mostly foreign key ids, so nothing big.
+		$this->call( EncounterConditionsValuesSeeder::class );
+		$this->call( EncounterConditionsValueProseSeeder::class );
+		$this->call( EncounterConditionsValueMapSeeder::class );
 	}
 }
