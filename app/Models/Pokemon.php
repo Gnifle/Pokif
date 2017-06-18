@@ -42,9 +42,32 @@ class Pokemon extends Model {
 		return $this->hasOne( 'App\Models\PokemonForm' );
 	}
 	
+	/**
+	 * @return string The name of the Pokemon (species)
+	 */
 	public function name() {
 		
 		return $this->species->name();
+	}
+	
+	/**
+	 * Gets all Pokemon with the same species ID as the current Pokemon instance. Can, optionally, include the default
+	 * form.
+	 *
+	 * @param bool $include_self (optional) Whether to include the default form. Defaults to false.
+	 *
+	 * @return array List of same species forms.
+	 */
+	public function getSameSpecies( $include_self = false ) {
+		
+		$query = $this->where( 'species_id', $this->id );
+		
+		if( ! $include_self ) {
+			
+			$query = $query->where( 'is_default', false );
+		}
+		
+		return $query->get()->toArray();
 	}
 	
 	/**
@@ -52,21 +75,20 @@ class Pokemon extends Model {
 	 */
 	public function getForms() {
 		
-		return DB::table( 'pokemon' )
-		         ->get( [ '*' ] )
-		         ->where( 'species_id', $this->id )
-		         ->toArray();
+		$same_species_ids = array_column( $this->getSameSpecies( true ), 'id' );
+		
+		return PokemonForm::whereIn( 'pokemon_id', $same_species_ids )
+		                  ->get();
 	}
 	
 	/**
-	 * @return array List of forms for the Pokemon
+	 * @return array List of alternate (non-default) forms for the Pokemon
 	 */
 	public function getAlternateForms() {
 		
-		return DB::table( 'pokemon' )
-		         ->get( [ '*' ] )
-		         ->where( 'species_id', $this->id )
-		         ->where( 'is_default', false )
-		         ->toArray();
+		$same_species_ids = array_column( $this->getSameSpecies( false ), 'id' );
+		
+		return PokemonForm::whereIn( 'pokemon_id', $same_species_ids )
+		                  ->get();
 	}
 }

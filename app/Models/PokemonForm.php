@@ -27,6 +27,7 @@ class PokemonForm extends Model {
 	 * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
 	 */
 	public function pokemon() {
+		git status
 		
 		return $this->belongsTo( 'App\Models\Pokemon' );
 	}
