@@ -20,7 +20,7 @@ trait Sluggable {
 	/**
 	 * Generates a machine-friendly slug based on the Pokemons name.
 	 *
-	 * @param string $name The name of the Pokemon whose slug to be set.
+	 * @param string $name The name of the PokemonBackup2 whose slug to be set.
 	 */
 	public function generateSlug( $name ) {
 		

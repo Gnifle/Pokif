@@ -7,20 +7,25 @@ class EncounterConditionsValueMapSeeder extends Seeder {
 	
 	public function run() {
 		
-		$count = 0;
-		$batch_size = 5000; // Batched to chunks of 5.000
+		$column_headers = [ 'encounter_id', 'encounter_condition_value_id' ];
 		
-		// TODO: Find a way to programmatically count CSV lines without including enclosed newlines.
-		$linecount = 12176; // Counted manually to save resources.
+		/**
+		 * Prepared statements can hold a maximum of placeholders equivalent to a 16-bit, unsigned integer (65.535)
+		 * So we can calculate the maximum possible batch size by the formula: UINT16_MAX / COLUMN_COUNT
+		 *
+		 * @see https://stackoverflow.com/questions/4922345/how-many-bind-variables-can-i-use-in-a-sql-query-in-mysql-5/11131824
+		 */
+		$batch_size = (int) ( 65535 / count( $column_headers ) );
+		$offset     = 1;
 		
-		while( $linecount > 0 ) {
+		do {
 			
-			$parser = new PokifCSVParser( 'encounter_condition_value_map', false, NULL, [ 'encounter_id', 'encounter_condition_value_id' ], $count * $batch_size, $batch_size - 1 );
+			$parser = new PokifCSVParser( 'encounter_condition_value_map', false, [], $column_headers, $offset, $batch_size );
 			
 			DB::table( 'encounter_condition_value_map' )->insert( $parser->data );
 			
-			$count++;
-			$linecount -= $batch_size;
-		}
+			$offset += $batch_size;
+			
+		} while( $parser->data );
 	}
 }

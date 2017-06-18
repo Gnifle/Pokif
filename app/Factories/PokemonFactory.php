@@ -8,17 +8,17 @@
 
 namespace App\Factories;
 
-use App\Models\Pokemon;
+use App\Models\PokemonBackup2;
 
 class PokemonFactory {
 	
 	/**
-	 * @var null|array $instance Singleton instance of the Pokemon factory
+	 * @var null|array $instance Singleton instance of the PokemonBackup2 factory
 	 */
 	protected static $instance = NULL;
 	
 	/**
-	 * @var array|null $pokemons List of cached Pokemon objects for memory conservation
+	 * @var array|null $pokemons List of cached PokemonBackup2 objects for memory conservation
 	 */
 	protected $pokemons = NULL;
 	
@@ -44,11 +44,11 @@ class PokemonFactory {
 	}
 	
 	/**
-	 * Gets a Pokemon by its number.
+	 * Gets a PokemonBackup2 by its number.
 	 *
-	 * @param $pokemon_number The number of which to fetch the Pokemon.
+	 * @param $pokemon_number The number of which to fetch the PokemonBackup2.
 	 *
-	 * @return Pokemon The Pokemon object for the given Pokemon number.
+	 * @return PokemonBackup2 The PokemonBackup2 object for the given PokemonBackup2 number.
 	 */
 	public function getPokemon( $pokemon_number ) {
 		
@@ -56,19 +56,19 @@ class PokemonFactory {
 			return $this->pokemons[ $pokemon_number ];
 		}
 		
-		return $this->pokemons[ $pokemon_number ] = new Pokemon( [ 'number', $pokemon_number ] );
+		return $this->pokemons[ $pokemon_number ] = new PokemonBackup2( [ 'number', $pokemon_number ] );
 	}
 	
 	/**
-	 * Store a created Pokemon object for caching.
+	 * Store a created PokemonBackup2 object for caching.
 	 *
-	 * @param Pokemon $pokemon The Pokemon object to store
+	 * @param PokemonBackup2 $pokemon The PokemonBackup2 object to store
 	 *
 	 * @return bool Whether storage was a success or not.
 	 */
 	public function storePokemon( $pokemon ) {
 		
-		if( ! $pokemon instanceof Pokemon || ! $pokemon->getNumber() ) {
+		if( ! $pokemon instanceof PokemonBackup2 || ! $pokemon->getNumber() ) {
 			return false;
 		}
 		

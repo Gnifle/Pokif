@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Sprite extends Model {
 	
 	/**
-	 * Takes a spritable item or Pokemon identifier and returns a list of sprites for the spritable.
+	 * Takes a spritable item or PokemonBackup2 identifier and returns a list of sprites for the spritable.
 	 * Will JSON encode the list and return if $encode is true.
 	 *
 	 * @param string $spritable String with the identifier of the spritable.
@@ -52,7 +52,7 @@ class Sprite extends Model {
 	}
 	
 	/**
-	 * Takes a spritable item or Pokemon identifier and returns a list of sprites for the spritable.
+	 * Takes a spritable item or PokemonBackup2 identifier and returns a list of sprites for the spritable.
 	 * Will JSON encode the list and return if $encode is true.
 	 *
 	 * @param string $spritable String with the identifier of the spritable.
@@ -83,7 +83,7 @@ class Sprite extends Model {
 	}
 	
 	/**
-	 * Takes a spritable item or Pokemon identifier and returns a list of sprites for the spritable.
+	 * Takes a spritable item or PokemonBackup2 identifier and returns a list of sprites for the spritable.
 	 * Will JSON encode the list and return if $encode is true.
 	 *
 	 * @param string $spritable String with the identifier of the spritable.

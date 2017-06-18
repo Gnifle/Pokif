@@ -14,18 +14,19 @@ class PokedexController extends Controller {
 	 */
 	public function index( $generation = NATIONAL_DEX ) {
 		
-		$pokedex = Pokedex::byGeneration( $generation );
-		
-		if( $pokedex === false || $pokedex === NULL ) {
-			return view( 'errors.pokedex.404' )->with( 'message', 'Pokedex not found' );
-		}
-		
-		$pokedex_entries = $pokedex->pokemon;
+//		$pokedex = Pokedex::byGeneration( $generation );
+//
+//		if( $pokedex === false || $pokedex === NULL ) {
+//			return view( 'errors.pokedex.404' )->with( 'message', 'Pokedex not found' );
+//		}
+//
+//		$pokedex_entries = $pokedex->pokemon;
 		
 		return view(
 //			'pages.pokedex',
 			'pages.tools.importer.pokemon',
-			[ 'pokedex' => $pokedex, 'pokemons' => $pokedex_entries ]
+			[]
+//			[ 'pokedex' => $pokedex, 'pokemons' => $pokedex_entries ]
 		);
 	}
 	

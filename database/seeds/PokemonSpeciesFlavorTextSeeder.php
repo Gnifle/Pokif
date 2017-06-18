@@ -6,32 +6,26 @@ use App\Helpers\PokifCSVParser;
 class PokemonSpeciesFlavorTextSeeder extends Seeder {
 	
 	public function run() {
-	
-//		Count total amount of lines in file. Resulted in around 96.000 last time since enclosed linebreaks are counted.
-//		Using this line count works, but results in parsing taking ~200 secs instead of ~50 when counted manually.
-//		$file      = base_path() . "/resources/assets/csv/pokemon_species_flavor_text.csv";
-//		$linecount = 0;
-//		$handle    = fopen( $file, "r" );
-//		while( ! feof( $handle ) ) {
-//			$line = fgets( $handle );
-//			$linecount ++;
-//		}
-//		fclose( $handle );
 		
-		$count = 0;
+		$column_headers = [ 'species_id', 'version_id', 'language_id', 'flavor_text' ];
 		
-		// TODO: Find a way to programmatically count CSV lines without including enclosed newlines.
-		$linecount = 32568; // Counted manually to save resources.
+		/**
+		 * Prepared statements can hold a maximum of placeholders equivalent to a 16-bit, unsigned integer (65.535)
+		 * So we can calculate the maximum possible batch size by the formula: UINT16_MAX / COLUMN_COUNT
+		 *
+		 * @see https://stackoverflow.com/questions/4922345/how-many-bind-variables-can-i-use-in-a-sql-query-in-mysql-5/11131824
+		 */
+		$batch_size = (int) ( 65535 / count( $column_headers ) );
+		$offset     = 0;
 		
-		while( $linecount > 0 ) {
+		do {
 			
-			$parser = new PokifCSVParser( 'pokemon_species_flavor_text', false, [], [ 'species_id', 'version_id', 'language_id', 'flavor_text' ], $count * 1000, 1000 );
+			$parser = new PokifCSVParser( 'pokemon_species_flavor_text', false, [], $column_headers, $offset, $batch_size );
 			
 			DB::table( 'pokemon_species_flavor_text' )->insert( $parser->data );
 			
-			$count++;
-			$linecount -= 1000;
-		}
-		
+			$offset += $batch_size;
+			
+		} while( $parser->data );
 	}
 }

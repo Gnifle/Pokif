@@ -7,6 +7,8 @@ class DatabaseSeeder extends Seeder {
 	/**
 	 * Run the database seeds.
 	 *
+	 * At this point, a full migration and seeding takes ~130 seconds.
+	 *
 	 * @return void
 	 */
 	public function run() {
@@ -129,7 +131,7 @@ class DatabaseSeeder extends Seeder {
 		$this->call( PokemonSpeciesSeeder::class );
 		$this->call( PokemonSpeciesNamesSeeder::class );
 		$this->call( PokemonSpeciesProseSeeder::class );
-//		$this->call( PokemonSpeciesFlavorTextSeeder::class ); // Gives about 45 secs extra seeding time with ~33.000 rows. Not crucial.
+		$this->call( PokemonSpeciesFlavorTextSeeder::class );
 		
 		$this->call( PokemonSeeder::class );
 		$this->call( PokemonSpritesSeeder::class );
@@ -143,7 +145,7 @@ class DatabaseSeeder extends Seeder {
 		$this->call( PokemonFormGenerationsSeeder::class );
 		$this->call( PokemonGameIndicesSeeder::class );
 		$this->call( PokemonItemsSeeder::class );
-//		$this->call( PokemonMovesSeeder::class ); // This works completely fine, but requires ~2,5 minutes to load (~367.000 lines). Only partially crucial.
+		$this->call( PokemonMovesSeeder::class );
 		$this->call( PokemonStatsSeeder::class );
 		$this->call( PokemonTypesSeeder::class );
 		
@@ -153,7 +155,7 @@ class DatabaseSeeder extends Seeder {
 		$this->call( EncounterSlotsSeeder::class );
 		$this->call( EncounterConditionsSeeder::class );
 		$this->call( EncounterConditionProseSeeder::class );
-		$this->call( EncountersSeeder::class ); // Also a little big (~47.000 lines, but mostly foreign key ids, so nothing big.
+		$this->call( EncountersSeeder::class );
 		$this->call( EncounterConditionsValuesSeeder::class );
 		$this->call( EncounterConditionsValueProseSeeder::class );
 		$this->call( EncounterConditionsValueMapSeeder::class );

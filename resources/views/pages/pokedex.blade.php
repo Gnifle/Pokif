@@ -1,4 +1,4 @@
-<?php /** @var App\Models\Pokemon $pokemon */ ?>
+<?php /** @var App\Models\PokemonBackup2 $pokemon */ ?>
 
 @extends('layouts.default')
 

@@ -3,11 +3,14 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use App\Traits\Sluggable;
+use DB;
 
 class Pokemon extends Model {
 	
-	use Sluggable;
+	/**
+	 * @var bool
+	 */
+	public $timestamps = false;
 	
 	/**
 	 * @var string
@@ -15,61 +18,55 @@ class Pokemon extends Model {
 	protected $table = 'pokemon';
 	
 	/**
-	 * @var string
-	 */
-	protected $primaryKey = 'number';
-	
-	/**
-	 * @var bool
-	 */
-	public $incrementing = false;
-	
-	/**
 	 * @var array
 	 */
-	protected $fillable = [ 'number' ];
+	protected $guarded = [];
 	
 	/**
-	 * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
-	 */
-	public function pokedex() {
-		
-		return $this->belongsToMany( 'App\Models\Pokedex', 'pokedex_entries', 'pokemon_number', 'pokedex_key' );
-	}
-	
-	/**
-	 * Returns the number of the Pokemon in the dex
+	 * Many-to-one inverse relationship with PokemonSpecies
 	 *
-	 * @return int The number of the Pokemon in the dex
+	 * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
 	 */
-	public function getNumber() {
+	public function species() {
 		
-		return $this->number;
+		return $this->belongsTo( 'App\Models\PokemonSpecies' );
 	}
 	
 	/**
-	 * Returns the raw name of the Pokemon,
+	 * One-to-many relationship with PokemonForm
 	 *
-	 * @return string The name of the Pokemon
+	 * @return \Illuminate\Database\Eloquent\Relations\HasMany
 	 */
-	public function getName() {
+	public function form() {
 		
-		return $this->name;
+		return $this->hasOne( 'App\Models\PokemonForm' );
+	}
+	
+	public function name() {
+		
+		return $this->species->name();
 	}
 	
 	/**
-	 * Returns a machine-friendly slug based on the Pokemons name.
-	 *
-	 * @return string The slug of the Pokemon
+	 * @return array List of forms for the Pokemon
 	 */
-	public function getSlug() {
+	public function getForms() {
 		
-		if( ! $this->slug ) {
-			$this->generateSlug( $this->name );
-			$this->save();
-		}
-		
-		return $this->slug;
+		return DB::table( 'pokemon' )
+		         ->get( [ '*' ] )
+		         ->where( 'species_id', $this->id )
+		         ->toArray();
 	}
 	
+	/**
+	 * @return array List of forms for the Pokemon
+	 */
+	public function getAlternateForms() {
+		
+		return DB::table( 'pokemon' )
+		         ->get( [ '*' ] )
+		         ->where( 'species_id', $this->id )
+		         ->where( 'is_default', false )
+		         ->toArray();
+	}
 }

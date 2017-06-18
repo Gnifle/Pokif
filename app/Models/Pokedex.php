@@ -20,7 +20,7 @@ class Pokedex extends Model {
 	/**
 	 * Returns a machine-friendly slug based on the Pokemons name.
 	 *
-	 * @return string The slug of the Pokemon
+	 * @return string The slug of the PokemonBackup2
 	 */
 	public function getSlug() {
 		
@@ -37,7 +37,7 @@ class Pokedex extends Model {
 	 */
 	public function pokemon() {
 		
-		return $this->belongsToMany( 'App\Models\Pokemon', 'pokedex_entries', 'pokedex_key', 'pokemon_number' );
+		return $this->belongsToMany( 'App\Models\PokemonBackup2', 'pokedex_entries', 'pokedex_key', 'pokemon_number' );
 	}
 	
 	/**
