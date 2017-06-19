@@ -58,7 +58,7 @@ class Pokemon extends Model {
 	 *
 	 * @return array List of same species forms.
 	 */
-	public function getSameSpecies( $include_self = false ) {
+	public function sameSpecies( $include_self = false ) {
 		
 		$query = $this->where( 'species_id', $this->id );
 		
@@ -73,9 +73,9 @@ class Pokemon extends Model {
 	/**
 	 * @return array List of forms for the Pokemon
 	 */
-	public function getForms() {
+	public function forms() {
 		
-		$same_species_ids = array_column( $this->getSameSpecies( true ), 'id' );
+		$same_species_ids = array_column( $this->sameSpecies( true ), 'id' );
 		
 		return PokemonForm::whereIn( 'pokemon_id', $same_species_ids )
 		                  ->get();
@@ -84,9 +84,9 @@ class Pokemon extends Model {
 	/**
 	 * @return array List of alternate (non-default) forms for the Pokemon
 	 */
-	public function getAlternateForms() {
+	public function alternateForms() {
 		
-		$same_species_ids = array_column( $this->getSameSpecies( false ), 'id' );
+		$same_species_ids = array_column( $this->sameSpecies( false ), 'id' );
 		
 		return PokemonForm::whereIn( 'pokemon_id', $same_species_ids )
 		                  ->get();
