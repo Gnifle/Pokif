@@ -33,6 +33,26 @@ class Pokemon extends Model {
 	}
 	
 	/**
+	 * Many-to-many relationship with Ability
+	 *
+	 * @return \Illuminate\Database\Eloquent\Relations\HasMany
+	 */
+	public function abilities() {
+		
+		return $this->hasMany( 'App\Models\Ability' );
+	}
+	
+	/**
+	 * Many-to-many relationship with EggGroup
+	 *
+	 * @return \Illuminate\Database\Eloquent\Relations\HasMany
+	 */
+	public function egg_groups() {
+		
+		return $this->hasMany( 'App\Models\EggGroup' );
+	}
+	
+	/**
 	 * One-to-many relationship with PokemonForm
 	 *
 	 * @return \Illuminate\Database\Eloquent\Relations\HasMany
