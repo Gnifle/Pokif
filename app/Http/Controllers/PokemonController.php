@@ -14,7 +14,6 @@ use Illuminate\Http\Request;
 use Illuminate\View\View;
 use Redirect;
 use Config;
-use DB;
 
 /**
  * Class PokemonController

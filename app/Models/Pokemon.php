@@ -2,11 +2,8 @@
 
 namespace App\Models;
 
-use App\Ability;
-use App\EggGroup;
-use Illuminate\Database\Eloquent\Model;
+use App\Models\EggGroup;
 use Eloquent;
-use DB;
 use Illuminate\Support\Collection;
 
 /**
@@ -94,28 +91,9 @@ class Pokemon extends Eloquent {
 	/**
 	 * @return string The name of the Pokemon (species)
 	 */
-	public function name() {
-		
-		return $this->species->name();
-	}
-	
-	/**
-	 * @return array List of forms for the Pokemon
-	 */
-	public function forms() {
-		
-		$same_species_ids = array_column( $this->sameSpecies( true ), 'id' );
-		
-		return PokemonForm::whereIn( 'pokemon_id', $same_species_ids )
-		                  ->get();
-	}
-	
-	/**
-	 * @return string The name of the Pokemon (species)
-	 */
 	public function getNameAttribute() {
 		
-		return $this->species->name();
+		return $this->species->name;
 	}
 	
 	/**

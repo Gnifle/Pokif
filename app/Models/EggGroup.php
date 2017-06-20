@@ -1,19 +1,17 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
-use App\Models\Pokemon;
-use Illuminate\Database\Eloquent\Model;
 use Eloquent;
 
 /**
- * App\EggGroup
+ * App\Models\EggGroup
  *
  * @property int $id
  * @property string $identifier
  * @property int $generation_id
  * @property bool $is_main_series
- * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Pokemon[] $pokemon
+ * @property-read Pokemon[] $pokemon
  * @method static EggGroup whereId($value)
  * @method static EggGroup whereIdentifier($value)
  * @method static EggGroup whereGenerationId($value)
