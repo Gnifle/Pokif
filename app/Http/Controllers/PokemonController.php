@@ -1,16 +1,20 @@
 <?php
 
+/** @var App\Models\Pokemon $pokemon */
+
 namespace App\Http\Controllers;
 
 use App\Factories\PokemonFactory;
 use App\Models\Pokedex;
 use App\Models\Pokemon;
 use App\Models\PokemonBackup2;
+use App\Models\PokemonSpecies;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 use Redirect;
 use Config;
+use DB;
 
 /**
  * Class PokemonController
@@ -19,78 +23,27 @@ use Config;
 class PokemonController extends Controller {
 	
 	/**
-	 * @param int $pokemon_identifier
+	 * @param int        $generation     The Pokedex to fetch Pokemon data from
+	 * @param int|string $pokemon_handle Identifier (slug/number) for the Pokemon to show
 	 *
-	 * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
-	 */
-	/*public function show( $pokemon_identifier ) {
-		
-		if( $this->getPokemonBySlug( $pokemon_identifier ) ) {
-			
-			$pokemon = PokemonBackup2::where( 'slug', $pokemon_identifier )->take( 1 )->get()->first();
-			
-		} else {
-			
-			$pokemon = PokemonBackup2::find( $pokemon_identifier );
-			
-			if( $pokemon !== NULL && $pokemon_slug = $pokemon->getSlug() ) {
-
-				return Redirect::to( '/pokemon/' . $pokemon_slug );
-				
-			}
-			
-		}
-		
-		if( $pokemon === NULL ) {
-			
-			return view( 'errors.503' );
-			
-		}
-		
-		return view(
-			'pages.tools.importer.pokemon',
-			[ 'pokemon' => $pokemon ]
-		);
-	}*/
-	
-	/**
-	 * @param int        $generation         The Pokedex to fetch PokemonBackup2 data from
-	 * @param int|string $pokemon_identifier Identifier (slug/number) for the PokemonBackup2 to show
-	 *
-	 * @return View|RedirectResponse View for the PokemonBackup2 if identifier matches a slug, otherwise redirects to
+	 * @return View|RedirectResponse View for the Pokemon if identifier matches a slug, otherwise redirects to
 	 *                               the same route with number identifier swapped with slug, if given.
 	 */
-	public function show( $generation, $pokemon_identifier ) {
+	public function show( $generation, $pokemon_handle ) {
 		
 		Config::set( 'generation', $generation );
 		
-		$pokemon = Pokemon::find( $pokemon_identifier );
-		print_r( $pokemon->getAlternateForms() );
+		if( $this->resolvePokemonHandleIsSlug( $pokemon_handle ) ) {
+			
+			$pokemon = $this->pokemonBySpeciesIdentifier( $pokemon_handle );
+			
+		} else {
+			
+			return $this->resolveRedirectByPokemonId( $pokemon_handle, $generation );
+		}
+		
+		print_r( $pokemon->name );
 
-//		$pokedex = Pokedex::byGeneration( $dex );
-//
-//		if( $this->resolvePokemonIdentifierIsSlug( $pokemon_identifier ) ) {
-//
-//			$pokemon = PokemonBackup2::where( 'slug', $pokemon_identifier )->take( 1 )->get()->first();
-//
-//		} else {
-//
-//			$pokemon = PokemonBackup2::find( $pokemon_identifier );
-//
-//			if( $pokemon !== NULL && $pokemon_slug = $pokemon->getSlug() ) {
-//
-//				return Redirect::to( "/pokedex/{$dex}/{$pokemon_slug}" );
-//
-//			}
-//
-//		}
-//
-//		if( $pokemon === NULL ) {
-//
-//			return view( 'errors.503' );
-//
-//		}
-//
 //		return view(
 //			'pages.tools.importer.pokemon',
 //			[ 'pokemon' => $pokemon, 'pokedex' => $pokedex ]
@@ -98,29 +51,47 @@ class PokemonController extends Controller {
 	}
 	
 	/**
-	 * @param $request Request
-	 *
-	 * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
-	 */
-	public function import( Request $request ) {
-		
-		return view(
-			'pages.tools.importer.pokemon',
-			[ 'pokemon' => PokemonFactory::getInstance()->getPokemon( $request->get( 'pokemon_number' ) ) ]
-		);
-		
-	}
-	
-	/**
 	 * Checks the given PokemonBackup2 identifier to resolve whether to find the PokemonBackup2 by number or slug
 	 *
-	 * @param $pokemon_identifier
+	 * @param $pokemon_handle
 	 *
 	 * @return bool
 	 */
-	public static function resolvePokemonIdentifierIsSlug( $pokemon_identifier ) {
+	public static function resolvePokemonHandleIsSlug( $pokemon_handle ) {
 		
-		return intval( $pokemon_identifier ) == 0;
+		return intval( $pokemon_handle ) == 0;
+	}
+	
+	/**
+	 * @param $pokemon_handle
+	 *
+	 * @return Pokemon
+	 */
+	public static function pokemonBySpeciesIdentifier( $pokemon_handle ) {
+		
+		$pokemon_species_id = PokemonSpecies::where( 'identifier', $pokemon_handle )->value( 'id' );
+		
+		return Pokemon::find( $pokemon_species_id );
+	}
+	
+	/**
+	 * @param int $pokemon_id The Pokemon to find identifier by
+	 * @param int $generation The generation from which to redirect the Pokemon
+	 *
+	 * @return RedirectResponse|View Redirect if an identifier was succesfully found by $pokemon_id. Else returns a 404
+	 *                               Pokemon view
+	 */
+	public static function resolveRedirectByPokemonId( $pokemon_id, $generation ) {
+		
+		$pokemon_species = PokemonSpecies::find( $pokemon_id );
+		
+		if( $pokemon_species !== NULL ) {
+			
+			return Redirect::to( "/pokedex/{$generation}/{$pokemon_species->identifier}" );
+			
+		}
+		
+		return view( 'errors.503' );
 	}
 	
 }

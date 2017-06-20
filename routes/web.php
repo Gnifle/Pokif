@@ -20,7 +20,7 @@ Route::get( '/pokedex', 'PokedexController@index' );
 
 Route::get( '/pokedex/{generation}', 'PokedexController@index' );
 
-Route::get( '/pokedex/{dex}/{pokemon}', 'PokemonController@show' );
+Route::get( '/pokedex/{generation}/{pokemon}', 'PokemonController@show' )->where( [ 'generation' => '[0-9]', 'pokemon' => '[a-z0-9-]+' ] );
 
 Route::get( '/tools', function() {
 	

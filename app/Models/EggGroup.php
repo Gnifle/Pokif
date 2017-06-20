@@ -2,9 +2,24 @@
 
 namespace App;
 
+use App\Models\Pokemon;
 use Illuminate\Database\Eloquent\Model;
+use Eloquent;
 
-class EggGroup extends Model {
+/**
+ * App\EggGroup
+ *
+ * @property int $id
+ * @property string $identifier
+ * @property int $generation_id
+ * @property bool $is_main_series
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Pokemon[] $pokemon
+ * @method static EggGroup whereId($value)
+ * @method static EggGroup whereIdentifier($value)
+ * @method static EggGroup whereGenerationId($value)
+ * @method static EggGroup whereIsMainSeries($value)
+ */
+class EggGroup extends Eloquent {
 	
 	/**
 	 * @var bool
@@ -28,6 +43,6 @@ class EggGroup extends Model {
 	 */
 	public function pokemon() {
 		
-		return $this->belongsToMany( 'App\Model\Pokemon' );
+		return $this->belongsToMany( Pokemon::class );
 	}
 }

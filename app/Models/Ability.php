@@ -1,10 +1,25 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
+use App\Models\Pokemon;
 use Illuminate\Database\Eloquent\Model;
+use Eloquent;
 
-class Ability extends Model {
+/**
+ * App\Models\Ability
+ *
+ * @property int $id
+ * @property string $identifier
+ * @property int $generation_id
+ * @property bool $is_main_series
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Pokemon[] $pokemon
+ * @method static Ability whereId($value)
+ * @method static Ability whereIdentifier($value)
+ * @method static Ability whereGenerationId($value)
+ * @method static Ability whereIsMainSeries($value)
+ */
+class Ability extends Eloquent {
 	
 	/**
 	 * @var bool
@@ -28,6 +43,6 @@ class Ability extends Model {
 	 */
 	public function pokemon() {
 		
-		return $this->belongsToMany( 'App\Model\Pokemon' );
+		return $this->belongsToMany( Pokemon::class );
 	}
 }

@@ -6,6 +6,22 @@ use Illuminate\Database\Eloquent\Model;
 use DB;
 use App;
 
+/**
+ * App\Models\Language
+ *
+ * @property int $id
+ * @property string $iso639
+ * @property string $iso3166
+ * @property string $identifier
+ * @property bool $official
+ * @property int $order
+ * @method static Language whereId($value)
+ * @method static Language whereIso639($value)
+ * @method static Language whereIso3166($value)
+ * @method static Language whereIdentifier($value)
+ * @method static Language whereOfficial($value)
+ * @method static Language whereOrder($value)
+ */
 class Language extends Model {
 	
 	/**

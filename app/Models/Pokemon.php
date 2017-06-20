@@ -2,10 +2,39 @@
 
 namespace App\Models;
 
+use App\Ability;
+use App\EggGroup;
 use Illuminate\Database\Eloquent\Model;
+use Eloquent;
 use DB;
+use Illuminate\Support\Collection;
 
-class Pokemon extends Model {
+/**
+ * App\Models\Pokemon
+ *
+ * @property int                 $id
+ * @property string              $identifier
+ * @property int                 $species_id
+ * @property int                 $height
+ * @property int                 $weight
+ * @property int                 $base_experience
+ * @property int                 $order
+ * @property int                 $is_default
+ * @property-read PokemonSpecies $species
+ * @property-read Ability[]      $abilities
+ * @property-read EggGroup[]     $egg_groups
+ * @property-read PokemonForm    $form
+ * @property-read string         $name
+ * @method static Pokemon whereId( $value )
+ * @method static Pokemon whereIdentifier( $value )
+ * @method static Pokemon whereSpeciesId( $value )
+ * @method static Pokemon whereHeight( $value )
+ * @method static Pokemon whereWeight( $value )
+ * @method static Pokemon whereBaseExperience( $value )
+ * @method static Pokemon whereOrder( $value )
+ * @method static Pokemon whereIsDefault( $value )
+ */
+class Pokemon extends Eloquent {
 	
 	/**
 	 * @var bool
@@ -29,7 +58,7 @@ class Pokemon extends Model {
 	 */
 	public function species() {
 		
-		return $this->belongsTo( 'App\Models\PokemonSpecies' );
+		return $this->belongsTo( PokemonSpecies::class );
 	}
 	
 	/**
@@ -39,7 +68,7 @@ class Pokemon extends Model {
 	 */
 	public function abilities() {
 		
-		return $this->hasMany( 'App\Models\Ability' );
+		return $this->hasMany( Ability::class );
 	}
 	
 	/**
@@ -49,7 +78,7 @@ class Pokemon extends Model {
 	 */
 	public function egg_groups() {
 		
-		return $this->hasMany( 'App\Models\EggGroup' );
+		return $this->hasMany( EggGroup::class );
 	}
 	
 	/**
@@ -59,7 +88,7 @@ class Pokemon extends Model {
 	 */
 	public function form() {
 		
-		return $this->hasOne( 'App\Models\PokemonForm' );
+		return $this->hasOne( PokemonForm::class );
 	}
 	
 	/**
@@ -68,26 +97,6 @@ class Pokemon extends Model {
 	public function name() {
 		
 		return $this->species->name();
-	}
-	
-	/**
-	 * Gets all Pokemon with the same species ID as the current Pokemon instance. Can, optionally, include the default
-	 * form.
-	 *
-	 * @param bool $include_self (optional) Whether to include the default form. Defaults to false.
-	 *
-	 * @return array List of same species forms.
-	 */
-	public function sameSpecies( $include_self = false ) {
-		
-		$query = $this->where( 'species_id', $this->id );
-		
-		if( ! $include_self ) {
-			
-			$query = $query->where( 'is_default', false );
-		}
-		
-		return $query->get()->toArray();
 	}
 	
 	/**
@@ -102,13 +111,50 @@ class Pokemon extends Model {
 	}
 	
 	/**
-	 * @return array List of alternate (non-default) forms for the Pokemon
+	 * @return string The name of the Pokemon (species)
 	 */
-	public function alternateForms() {
+	public function getNameAttribute() {
+		
+		return $this->species->name();
+	}
+	
+	/**
+	 * @return Collection List of forms for the Pokemon
+	 */
+	public function getFormsAttribute() {
+		
+		$same_species_ids = array_column( $this->sameSpecies( true ), 'id' );
+		
+		return PokemonForm::whereIn( 'pokemon_id', $same_species_ids )->get();
+	}
+	
+	/**
+	 * @return Collection List of alternate (non-default) forms for the Pokemon
+	 */
+	public function getAlternateFormsAttribute() {
 		
 		$same_species_ids = array_column( $this->sameSpecies( false ), 'id' );
 		
-		return PokemonForm::whereIn( 'pokemon_id', $same_species_ids )
-		                  ->get();
+		return PokemonForm::whereIn( 'pokemon_id', $same_species_ids )->get();
+	}
+	
+	/**
+	 * Gets all Pokemon with the same species ID as the current Pokemon instance. Can, optionally, include the default
+	 * form.
+	 *
+	 * @param bool $include_self (optional) Whether to include the default form. Defaults to false.
+	 *
+	 * @return array List of same species forms.
+	 */
+	private function sameSpecies( $include_self = false ) {
+		
+		$query = $this->where( 'species_id', $this->id );
+		
+		if( ! $include_self ) {
+			
+			$query = $query->where( 'is_default', false );
+		}
+		
+		return $query->get()->toArray();
 	}
 }
