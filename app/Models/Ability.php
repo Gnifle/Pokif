@@ -43,6 +43,6 @@ class Ability extends Eloquent {
 	 */
 	public function pokemon() {
 		
-		return $this->belongsToMany( Pokemon::class );
+		return $this->belongsToMany( Pokemon::class, 'pokemon_abilities' );
 	}
 }

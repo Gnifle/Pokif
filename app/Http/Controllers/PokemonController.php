@@ -6,6 +6,7 @@ namespace App\Http\Controllers;
 
 use App\Factories\PokemonFactory;
 use App\Models\Pokedex;
+use App\Models\Pokedex2;
 use App\Models\Pokemon;
 use App\Models\PokemonBackup2;
 use App\Models\PokemonSpecies;
@@ -22,7 +23,7 @@ use Config;
 class PokemonController extends Controller {
 	
 	/**
-	 * @param int        $generation     The Pokedex to fetch Pokemon data from
+	 * @param int        $generation     The Pokedex2 to fetch Pokemon data from
 	 * @param int|string $pokemon_handle Identifier (slug/number) for the Pokemon to show
 	 *
 	 * @return View|RedirectResponse View for the Pokemon if identifier matches a slug, otherwise redirects to
@@ -41,7 +42,7 @@ class PokemonController extends Controller {
 			return $this->resolveRedirectByPokemonId( $pokemon_handle, $generation );
 		}
 		
-		print_r( $pokemon->name );
+		print_r( $pokemon->species->pokedex_entries );
 
 //		return view(
 //			'pages.tools.importer.pokemon',

@@ -71,7 +71,12 @@ class PokemonSpecies extends Eloquent {
 	 */
 	public function pokemon() {
 		
-		return $this->hasMany( 'App\Models\Pokemon' );
+		return $this->hasMany( Pokemon::class );
+	}
+	
+	public function pokedex_entries() {
+		
+		return $this->belongsToMany( Pokedex::class, 'pokemon_dex_numbers', 'species_id', 'pokedex_id' );
 	}
 	
 	/**

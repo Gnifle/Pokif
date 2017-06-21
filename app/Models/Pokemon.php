@@ -61,11 +61,21 @@ class Pokemon extends Eloquent {
 	/**
 	 * Many-to-many relationship with Ability
 	 *
-	 * @return \Illuminate\Database\Eloquent\Relations\HasMany
+	 * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
 	 */
 	public function abilities() {
 		
-		return $this->hasMany( Ability::class );
+		return $this->belongsToMany( Ability::class, 'pokemon_abilities' );
+	}
+	
+	/**
+	 * Many-to-many relationship with Ability where pivot is_hidden == true
+	 *
+	 * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+	 */
+	public function hidden_abilities() {
+		
+		return $this->belongsToMany( Ability::class, 'pokemon_abilities' )->wherePivot( 'is_hidden', true );
 	}
 	
 	/**
