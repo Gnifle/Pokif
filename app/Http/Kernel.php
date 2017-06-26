@@ -2,6 +2,7 @@
 
 namespace App\Http;
 
+use App\Http\Middleware\GenerationMiddleware;
 use App\Http\Middleware\LangMiddleware;
 use App\Http\Middleware\RedirectToLowercase;
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
@@ -19,6 +20,7 @@ class Kernel extends HttpKernel
         \Illuminate\Foundation\Http\Middleware\CheckForMaintenanceMode::class,
         LangMiddleware::class,
 	    RedirectToLowercase::class,
+	    GenerationMiddleware::class,
     ];
 
     /**

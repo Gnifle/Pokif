@@ -15,6 +15,11 @@
         </header>
 
         <div id="main">
+
+            <nav id="menu">
+                @include('includes.menu')
+            </nav>
+
             @yield('content')
         </div>
 

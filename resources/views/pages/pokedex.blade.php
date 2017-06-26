@@ -1,6 +1,6 @@
 <?php /** @var App\Models\PokemonBackup2 $pokemon */ ?>
 
-@extends('layouts.default')
+@extends('layouts.pokif')
 
 @section('content')
 

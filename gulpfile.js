@@ -26,7 +26,7 @@ elixir( function( mix ) {
 
 	], 'public/dist/app.min.js', 'public/js' );
 
-	mix.phpUnit();
+	// mix.phpUnit();
 
 	mix.version( 'public/dist/app.min.css' )
 

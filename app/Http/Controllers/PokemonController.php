@@ -41,13 +41,11 @@ class PokemonController extends Controller {
 			
 			return $this->resolveRedirectByPokemonId( $pokemon_handle, $generation );
 		}
-		
-		print_r( $pokemon->species->pokedex_entries );
 
-//		return view(
-//			'pages.tools.importer.pokemon',
-//			[ 'pokemon' => $pokemon, 'pokedex' => $pokedex ]
-//		);
+		return view(
+			'pages.pokemon',
+			[ 'pokemon' => $pokemon ]
+		);
 	}
 	
 	/**
