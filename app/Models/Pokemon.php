@@ -99,6 +99,14 @@ class Pokemon extends Eloquent {
 	}
 	
 	/**
+	 * @return int The number (ID) of the Pokemon
+	 */
+	public function getNumberAttribute() {
+		
+		return $this->species_id;
+	}
+	
+	/**
 	 * @return string The name of the Pokemon (species)
 	 */
 	public function getNameAttribute() {
