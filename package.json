@@ -1,18 +1,29 @@
 {
-  "private": true,
-  "scripts": {
-    "prod": "gulp --production",
-    "dev": "gulp watch"
+  "name": "pokif",
+  "version": "0.1.2",
+  "description": "A Laravel Pokemon project. An attempt to centralize Pokemon game info while learning Laravel using Homestead. Inspired by Serebii.net, powered by PokeAPI.",
+  "main": "gulpfile.js",
+  "directories": {
+    "test": "tests"
   },
+  "dependencies": {},
   "devDependencies": {
-    "bootstrap-sass": "^3.3.7",
+    "browser-sync": "^2.18.12",
     "gulp": "^3.9.1",
-    "jquery": "^3.1.0",
-    "laravel-elixir": "^6.0.0-9",
-    "laravel-elixir-vue-2": "^0.2.0",
-    "laravel-elixir-webpack-official": "^1.0.2",
-    "lodash": "^4.16.2",
-    "vue": "^2.0.1",
-    "vue-resource": "^1.0.3"
-  }
+    "gulp-sass": "^3.1.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Gnifle/pokif.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Gnifle/pokif/issues"
+  },
+  "homepage": "https://github.com/Gnifle/pokif#readme"
 }

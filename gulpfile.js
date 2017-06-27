@@ -1,33 +1,36 @@
-const elixir = require('laravel-elixir');
+var gulp = require( 'gulp' ),
+	sass = require( 'gulp-sass' ),
+	browserSync = require( 'browser-sync' ).create();
 
-require('laravel-elixir-vue-2');
+var sassPath = 'resources/assets/scss/**/[^_]*.?(s)css';
 
-/*
- |--------------------------------------------------------------------------
- | Elixir Asset Management
- |--------------------------------------------------------------------------
- |
- | Elixir provides a clean, fluent API for defining some basic Gulp tasks
- | for your Laravel application. By default, we are compiling the Sass
- | file for our application, as well as publishing vendor resources.
- |
- */
+gulp.task( 'sass', function() {
+	
+	return gulp.src( sassPath )
+		.pipe( sass() )
+		.pipe( gulp.dest( 'public/css' ) )
+		.pipe( browserSync.reload( {
+			stream: true
+		} ) );
+} );
 
-elixir( function( mix ) {
+gulp.task( 'browserSync', function() {
+	
+	browserSync.init( {
+		// open: 'external',
+		host: 'pokif.dev',
+		// port: 80,
+		proxy: 'pokif.dev'
+	} );
+	
+} );
 
-	mix.sass( 'app.sass' );
+gulp.task( 'reload', function() {
+	
+	browserSync.reload();
+} );
 
-	mix.styles([
-		'vendor/normalize.css',
-		'app.css'
-	], 'public/dist/app.min.css', 'public/css' );
-
-	mix.scripts([
-
-	], 'public/dist/app.min.js', 'public/js' );
-
-	// mix.phpUnit();
-
-	mix.version( 'public/dist/app.min.css' )
-
-});
+gulp.task( 'watch', [ 'browserSync', 'sass' ], function() {
+	
+	gulp.watch( sassPath, [ 'sass', 'reload' ] );
+} );

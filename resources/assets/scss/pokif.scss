@@ -1,0 +1,10 @@
+@import "variables";
+
+body {
+	background: $test;
+}
+
+div {
+	width: percentage(5/7);
+	background: blue;
+}
