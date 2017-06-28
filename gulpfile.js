@@ -1,6 +1,8 @@
-var gulp = require( 'gulp' ),
-	sass = require( 'gulp-sass' ),
-	browserSync = require( 'browser-sync' ).create();
+const gulp        = require( 'gulp' ),
+      sass        = require( 'gulp-sass' ),
+      concat      = require( 'gulp-concat' ),
+      concatCss   = require( 'gulp-concat-css' ),
+      browserSync = require( 'browser-sync' ).create();
 
 var sassPath = 'resources/assets/scss/**/[^_]*.?(s)css';
 
@@ -17,20 +19,13 @@ gulp.task( 'sass', function() {
 gulp.task( 'browserSync', function() {
 	
 	browserSync.init( {
-		// open: 'external',
-		host: 'pokif.dev',
-		// port: 80,
+		host:  'pokif.dev',
 		proxy: 'pokif.dev'
 	} );
 	
 } );
 
-gulp.task( 'reload', function() {
-	
-	browserSync.reload();
-} );
-
 gulp.task( 'watch', [ 'browserSync', 'sass' ], function() {
 	
-	gulp.watch( sassPath, [ 'sass', 'reload' ] );
+	gulp.watch( sassPath, [ 'sass' ] );
 } );
