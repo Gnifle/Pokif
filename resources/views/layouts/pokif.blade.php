@@ -8,6 +8,10 @@
 
 <body>
 
+    <div style="height: 0; width: 0; position: absolute; visibility: hidden">
+        {!! include( resource_path() . '/assets/svg/svg.svg' ) !!}
+    </div>
+
     <div id="page" class="container">
 
         <header>
@@ -20,7 +24,9 @@
                 @include('includes.menu')
             </nav>
 
-            @yield('content')
+            <div id="content">
+                @yield('content')
+            </div>
         </div>
 
         <footer>

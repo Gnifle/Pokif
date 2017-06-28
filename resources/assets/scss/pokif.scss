@@ -1,10 +1,78 @@
+@import "normalize";
+@import "reset";
+@import "mixins";
 @import "variables";
 
 body {
-	background: $test;
+	background: $primary;
 }
 
-div {
-	width: percentage(5/7);
-	background: orangered;
+#page {
+	display:        flex;
+	flex-direction: column;
+	min-height:     100vh;
+	
+	header {
+		background: $secondary;
+		
+		&::after {
+			@include size(100%, 0);
+			content:       '';
+			position:      absolute;
+			z-index:       100;
+			//border-bottom: $header-border-height solid darken($secondary, 10);
+			border-bottom: $header-border-height solid transparentize($secondary, 0.5);
+		}
+		
+		#logo {
+			@include size($menu-width);
+			
+			a:link {
+				@include size(100%);
+				display: block;
+				padding: 15%;
+			}
+		}
+	}
+	
+	#main {
+		@include minSize(auto, 200vh);
+		display: flex;
+		
+		> nav {
+			position:   relative;
+			z-index:    90;
+			width:      $menu-width;
+			padding:    $header-border-height 0;
+			background: darken($primary, 15);
+			
+			> ul {
+				position:   sticky;
+				top:        10px;
+				margin:     0;
+				padding:    $header-border-height 0;
+				list-style: none;
+				
+				> li {
+					@include size($menu-width);
+					
+					a:link {
+						@include size($menu-width);
+						display:    block;
+						padding:    15%;
+						text-align: center;
+						
+						svg {
+							@include size(50%);
+							display: inline-block;
+						}
+					}
+				}
+			}
+		}
+		
+		#content {
+			padding: $header-border-height 0 0;
+		}
+	}
 }
