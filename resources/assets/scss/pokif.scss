@@ -20,7 +20,6 @@ body {
 			content:       '';
 			position:      absolute;
 			z-index:       100;
-			//border-bottom: $header-border-height solid darken($secondary, 10);
 			border-bottom: $header-border-height solid transparentize($secondary, 0.5);
 		}
 		
@@ -63,7 +62,7 @@ body {
 						text-align: center;
 						
 						svg {
-							@include size(50%);
+							@include size(70%);
 							display: inline-block;
 						}
 					}
