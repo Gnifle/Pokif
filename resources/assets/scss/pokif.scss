@@ -25,6 +25,7 @@ body {
 		
 		#logo {
 			@include size($menu-width);
+			@include minSize($menu-min-width);
 			
 			a:link {
 				@include size(100%);
@@ -42,8 +43,9 @@ body {
 			position:   relative;
 			z-index:    90;
 			width:      $menu-width;
+			min-width:  $menu-min-width;
 			padding:    $header-border-height 0;
-			background: darken($primary, 15);
+			background: darken($primary, 12);
 			
 			> ul {
 				position:   sticky;
@@ -54,9 +56,31 @@ body {
 				
 				> li {
 					@include size($menu-width);
+					@include minSize($menu-min-width);
+					position: relative;
+					left: 0;
+					transition-duration: 125ms;
+					transition-property: left, background-color;
+					transition-timing-function: ease-in-out;
+					transition-delay: 0ms, 20ms;
+					
+					&::before {
+						content: '';
+						position: absolute;
+						width: 10%;
+						height: 100%;
+						background: red;
+						transform: translateX(-100%);
+					}
+					
+					&:hover, &.active {
+						left: 10px;
+						background: darken($primary, 12);
+					}
 					
 					a:link {
 						@include size($menu-width);
+						@include minSize($menu-min-width);
 						display:    block;
 						padding:    15%;
 						text-align: center;
