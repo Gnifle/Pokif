@@ -22,3 +22,6 @@ public/web.config_modified
 
 .idea
 .idea/
+
+hup.bat
+hdown.bat
