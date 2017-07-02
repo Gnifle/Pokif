@@ -3,91 +3,108 @@
 @import "mixins";
 @import "variables";
 
+html {
+	font-size: calc(14px + 8 * ((100vw - 500px) / 1500));
+}
+
 body {
 	background: $primary;
 }
 
 #page {
-	display:        flex;
-	flex-direction: column;
-	min-height:     100vh;
 	
 	header {
+		display:    flex;
+		position:   relative;
 		background: $secondary;
 		
 		&::after {
 			@include size(100%, 0);
 			content:       '';
 			position:      absolute;
+			top:           100%;
+			left:          0;
 			z-index:       100;
 			border-bottom: $header-border-height solid transparentize($secondary, 0.5);
 		}
 		
-		#logo {
+		#logo, #menu-toggle-area {
 			@include size($menu-width);
-			@include minSize($menu-min-width);
 			
-			a:link {
+			a {
 				@include size(100%);
 				display: block;
 				padding: 15%;
 			}
 		}
+		
+		#menu-toggle-area {
+			
+			a {
+				padding: 25%;
+			}
+		}
 	}
 	
 	#main {
-		@include minSize(auto, 200vh);
-		display: flex;
+		display:  flex;
+		position: relative;
 		
 		> nav {
-			position:   relative;
-			z-index:    90;
-			width:      $menu-width;
-			min-width:  $menu-min-width;
-			padding:    $header-border-height 0;
-			background: darken($primary, 12);
+			position:                   relative;
+			//left:                       -$menu-width;
+			z-index:                    90;
+			width:                      $menu-width;
+			min-height:                 100vh;
+			padding:                    $header-border-height 0 0;
+			background:                 darken($primary, 12);
+			transition-duration:        125ms;
+			transition-property:        left, background-color, height;
+			transition-timing-function: ease-in-out;
+			transition-delay:           0ms, 20ms, 0ms;
 			
 			> ul {
 				position:   sticky;
-				top:        10px;
+				top:        20px;
 				margin:     0;
-				padding:    $header-border-height 0;
+				padding:    ( $header-border-height + 3 ) 0 0;
 				list-style: none;
 				
 				> li {
-					@include size($menu-width);
-					@include minSize($menu-min-width);
-					position: relative;
-					left: 0;
-					transition-duration: 125ms;
-					transition-property: left, background-color;
-					transition-timing-function: ease-in-out;
-					transition-delay: 0ms, 20ms;
+					//@include size($menu-width);
+					//@include minSize($menu-min-width);
+					//position: relative;
+					//left: 0;
+					//transition-duration: 125ms;
+					//transition-property: left, background-color;
+					//transition-timing-function: ease-in-out;
+					//transition-delay: 0ms, 20ms;
 					
 					&::before {
-						content: '';
-						position: absolute;
-						width: 10%;
-						height: 100%;
-						background: red;
-						transform: translateX(-100%);
+						//content: '';
+						//position: absolute;
+						//width: 10%;
+						//height: 100%;
+						//background: red;
+						//transform: translateX(-105%);
 					}
 					
 					&:hover, &.active {
-						left: 10px;
-						background: darken($primary, 12);
+						//left: 10px;
+						//background: darken($primary, 12);
 					}
 					
 					a:link {
-						@include size($menu-width);
-						@include minSize($menu-min-width);
 						display:    block;
-						padding:    15%;
+						//@include size($menu-width);
+						//@include minSize($menu-min-width);
+						//display:    block;
+						//padding:    15%;
 						text-align: center;
 						
 						svg {
-							@include size(70%);
-							display: inline-block;
+							@include size($menu-width * 0.4);
+							//display: inline-block;
 						}
 					}
 				}

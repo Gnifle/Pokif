@@ -2,6 +2,6 @@
 
 @section('content')
 
-    Content
+    Content test
 
 @stop

@@ -404,98 +404,78 @@ img {
   -webkit-box-sizing: content-box;
           box-sizing: content-box; }
 
-svg {
+svg,
+svg > use {
   width: 100%;
-  height: 100%; }
+  height: 100%;
+  max-width: 100%;
+  max-height: 100%;
+  pointer-events: none; }
+
+html {
+  font-size: calc(14px + 8 * ((100vw - 500px) / 1500)); }
 
 body {
   background: #383838; }
 
-#page {
+#page header {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  min-height: 100vh; }
-  #page header {
-    background: #507C36; }
-    #page header::after {
+  position: relative;
+  background: #507C36; }
+  #page header::after {
+    width: 100%;
+    height: 0;
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 100;
+    border-bottom: 2vw solid rgba(80, 124, 54, 0.5); }
+  #page header #logo, #page header #menu-toggle-area {
+    width: 15vw;
+    height: 15vw; }
+    #page header #logo a, #page header #menu-toggle-area a {
       width: 100%;
-      height: 0;
-      content: '';
-      position: absolute;
-      z-index: 100;
-      border-bottom: 8px solid rgba(80, 124, 54, 0.5); }
-    #page header #logo {
-      width: 5vw;
-      height: 5vw;
-      min-width: 70px;
-      min-height: 70px; }
-      #page header #logo a:link {
-        width: 100%;
-        height: 100%;
+      height: 100%;
+      display: block;
+      padding: 15%; }
+  #page header #menu-toggle-area a {
+    padding: 25%; }
+
+#page #main {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  position: relative; }
+  #page #main > nav {
+    position: relative;
+    z-index: 90;
+    width: 15vw;
+    min-height: 100vh;
+    padding: 2vw 0 0;
+    background: #191919;
+    -webkit-transition-duration: 125ms;
+            transition-duration: 125ms;
+    -webkit-transition-property: left, background-color, height;
+    transition-property: left, background-color, height;
+    -webkit-transition-timing-function: ease-in-out;
+            transition-timing-function: ease-in-out;
+    -webkit-transition-delay: 0ms, 20ms, 0ms;
+            transition-delay: 0ms, 20ms, 0ms; }
+    #page #main > nav > ul {
+      position: -webkit-sticky;
+      position: sticky;
+      top: 20px;
+      margin: 0;
+      padding: 5vw 0 0;
+      list-style: none; }
+      #page #main > nav > ul > li a:link {
         display: block;
-        padding: 15%; }
-  #page #main {
-    min-width: auto;
-    min-height: 200vh;
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex; }
-    #page #main > nav {
-      position: relative;
-      z-index: 90;
-      width: 5vw;
-      min-width: 70px;
-      padding: 8px 0;
-      background: #191919; }
-      #page #main > nav > ul {
-        position: -webkit-sticky;
-        position: sticky;
-        top: 10px;
-        margin: 0;
-        padding: 8px 0;
-        list-style: none; }
-        #page #main > nav > ul > li {
-          width: 5vw;
-          height: 5vw;
-          min-width: 70px;
-          min-height: 70px;
-          position: relative;
-          left: 0;
-          -webkit-transition-duration: 125ms;
-                  transition-duration: 125ms;
-          -webkit-transition-property: left, background-color;
-          transition-property: left, background-color;
-          -webkit-transition-timing-function: ease-in-out;
-                  transition-timing-function: ease-in-out;
-          -webkit-transition-delay: 0ms, 20ms;
-                  transition-delay: 0ms, 20ms; }
-          #page #main > nav > ul > li::before {
-            content: '';
-            position: absolute;
-            width: 10%;
-            height: 100%;
-            background: red;
-            -webkit-transform: translateX(-100%);
-                    transform: translateX(-100%); }
-          #page #main > nav > ul > li:hover, #page #main > nav > ul > li.active {
-            left: 10px;
-            background: #191919; }
-          #page #main > nav > ul > li a:link {
-            width: 5vw;
-            height: 5vw;
-            min-width: 70px;
-            min-height: 70px;
-            display: block;
-            padding: 15%;
-            text-align: center; }
-            #page #main > nav > ul > li a:link svg {
-              width: 70%;
-              height: 70%;
-              display: inline-block; }
-    #page #main #content {
-      padding: 8px 0 0; }
+        text-align: center; }
+        #page #main > nav > ul > li a:link svg {
+          width: 6vw;
+          height: 6vw; }
+  #page #main #content {
+    padding: 2vw 0 0; }
