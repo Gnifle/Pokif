@@ -450,7 +450,8 @@ body {
   display: flex;
   position: relative; }
   #page #main > nav {
-    position: relative;
+    position: absolute;
+    left: -15vw;
     z-index: 90;
     width: 15vw;
     min-height: 100vh;

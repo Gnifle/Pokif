@@ -5,7 +5,7 @@
 
 <title>Stuff</title>
 
-<script type="text/javascript" src="{!! asset( 'js/test.js' ) !!}"></script>
+<script type="text/javascript" src="{!! asset( 'js/menu.js' ) !!}"></script>
 
 <link rel="stylesheet" href="{!! asset( 'css/pokif.css' ) !!}">
 

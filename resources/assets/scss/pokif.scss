@@ -51,8 +51,8 @@ body {
 		position: relative;
 		
 		> nav {
-			position:                   relative;
-			//left:                       -$menu-width;
+			position:                   absolute;
+			left:                       -$menu-width;
 			z-index:                    90;
 			width:                      $menu-width;
 			min-height:                 100vh;
