@@ -5,7 +5,11 @@
 
 <title>Stuff</title>
 
-<script type="text/javascript" src="{!! asset( 'js/menu.js' ) !!}"></script>
+<script type="text/javascript" src="{!! asset( 'dist/lib/jquery/jquery.min.js' ) !!}"></script>
+<script type="text/javascript" src="{!! asset( 'dist/lib/velocity/velocity.js' ) !!}"></script>
+<script type="text/javascript" src="{!! asset( 'dist/lib/jquery-touchswipe/jquery.touchSwipe.js' ) !!}"></script>
+
+<script type="text/javascript" src="{!! asset( 'js/pokif.js' ) !!}"></script>
 
 <link rel="stylesheet" href="{!! asset( 'css/pokif.css' ) !!}">
 

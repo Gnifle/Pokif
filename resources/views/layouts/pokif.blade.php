@@ -37,7 +37,7 @@
 
 @stack('lazy_scripts')
 
-<script type="text/javascript" src="https://rawgit.com/FremyCompany/css-grid-polyfill/1.1.0/bin/css-polyfills.min.js"></script>
+<?php /*<script type="text/javascript" src="https://rawgit.com/FremyCompany/css-grid-polyfill/1.1.0/bin/css-polyfills.min.js"></script>*/ ?>
 
 </body>
 

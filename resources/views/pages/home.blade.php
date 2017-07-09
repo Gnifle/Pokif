@@ -2,6 +2,6 @@
 
 @section('content')
 
-    Content test
+    Content test <?php print str_repeat( 'content test ', 400 ); ?>
 
 @stop

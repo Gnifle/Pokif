@@ -40,6 +40,7 @@ var jsPath = 'resources/assets/js/**/*.js';
 gulp.task( 'js', function() {
 	
 	return gulp.src( jsPath )
+		.pipe( plumbler() )
 		.pipe( sourcemaps.init() )
 		.pipe( jshint() )
 		.pipe( jshint.reporter( 'jshint-stylish' ) )
@@ -60,13 +61,25 @@ gulp.task( 'browserSync', function() {
 	
 } );
 
-gulp.task( 'watch', [ 'browserSync', 'sass', 'js' ], function() {
+gulp.task( 'watch', [ 'svgstore', 'libraries', 'browserSync', 'sass', 'js' ], function() {
 	
 	gulp.watch( sassAll, [ 'sass' ] );
 	gulp.watch( jsPath, [ 'js' ] );
 	
 	gulp.watch( 'resources/views/**/*.blade.php', browserSync.reload );
 	gulp.watch( 'resources/assets/js/**/*.js', browserSync.reload );
+} );
+
+gulp.task( 'libraries', function() {
+	
+	gulp.src( 'node_modules/velocity-animate/velocity*.js' )
+		.pipe( gulp.dest( 'public/dist/lib/velocity' ) );
+	
+	gulp.src( 'node_modules/jquery-touchswipe/jquery.touchSwipe*.js' )
+		.pipe( gulp.dest( 'public/dist/lib/jquery-touchswipe' ) );
+	
+	return gulp.src( 'node_modules/jquery/dist/jquery*.js' )
+		.pipe( gulp.dest( 'public/dist/lib/jquery' ) );
 } );
 
 gulp.task( 'svgstore', function() {

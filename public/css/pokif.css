@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css?family=Roboto:300,400,700");
 /*! normalize.css v7.0.0 | MIT License | github.com/necolas/normalize.css */
 /* Document
    ========================================================================== */
@@ -412,71 +413,94 @@ svg > use {
   max-height: 100%;
   pointer-events: none; }
 
+html, body {
+  width: 100%;
+  height: 100%; }
+
 html {
+  font-family: 'Roboto', sans-serif;
   font-size: calc(14px + 8 * ((100vw - 500px) / 1500)); }
 
 body {
   background: #383838; }
 
-#page header {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  position: relative;
-  background: #507C36; }
-  #page header::after {
-    width: 100%;
-    height: 0;
-    content: '';
-    position: absolute;
-    top: 100%;
-    left: 0;
-    z-index: 100;
-    border-bottom: 2vw solid rgba(80, 124, 54, 0.5); }
-  #page header #logo, #page header #menu-toggle-area {
-    width: 15vw;
-    height: 15vw; }
-    #page header #logo a, #page header #menu-toggle-area a {
+#page {
+  height: 100%;
+  overflow-x: hidden; }
+  #page header {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    position: relative;
+    background: #507C36; }
+    #page header::after {
       width: 100%;
-      height: 100%;
-      display: block;
-      padding: 15%; }
-  #page header #menu-toggle-area a {
-    padding: 25%; }
-
-#page #main {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  position: relative; }
-  #page #main > nav {
-    position: absolute;
-    left: -15vw;
-    z-index: 90;
-    width: 15vw;
-    min-height: 100vh;
-    padding: 2vw 0 0;
-    background: #191919;
-    -webkit-transition-duration: 125ms;
-            transition-duration: 125ms;
-    -webkit-transition-property: left, background-color, height;
-    transition-property: left, background-color, height;
-    -webkit-transition-timing-function: ease-in-out;
-            transition-timing-function: ease-in-out;
-    -webkit-transition-delay: 0ms, 20ms, 0ms;
-            transition-delay: 0ms, 20ms, 0ms; }
-    #page #main > nav > ul {
-      position: -webkit-sticky;
-      position: sticky;
-      top: 20px;
-      margin: 0;
-      padding: 5vw 0 0;
-      list-style: none; }
-      #page #main > nav > ul > li a:link {
+      height: 0;
+      content: '';
+      position: absolute;
+      top: 100%;
+      left: 0;
+      z-index: 100;
+      border-bottom: 2vw solid rgba(80, 124, 54, 0.5); }
+    #page header #logo, #page header #menu-toggle-area {
+      width: 15vw;
+      height: 15vw; }
+      #page header #logo a, #page header #menu-toggle-area a {
+        width: 100%;
+        height: 100%;
         display: block;
-        text-align: center; }
-        #page #main > nav > ul > li a:link svg {
-          width: 6vw;
-          height: 6vw; }
-  #page #main #content {
-    padding: 2vw 0 0; }
+        padding: 15%; }
+    #page header #menu-toggle-area a {
+      padding: 25%; }
+  #page #main {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    position: relative; }
+    #page #main > nav {
+      -webkit-box-flex: 0;
+          -ms-flex: 0 0 15vw;
+              flex: 0 0 15vw;
+      position: relative;
+      left: -15vw;
+      z-index: 90;
+      overflow: hidden;
+      padding: 2vw 0 0;
+      background: #191919;
+      -webkit-transition-duration: 125ms;
+              transition-duration: 125ms;
+      -webkit-transition-property: left, background-color, height;
+      transition-property: left, background-color, height;
+      -webkit-transition-timing-function: ease-in-out;
+              transition-timing-function: ease-in-out;
+      -webkit-transition-delay: 0ms, 20ms, 0ms;
+              transition-delay: 0ms, 20ms, 0ms; }
+      #page #main > nav > ul {
+        position: -webkit-sticky;
+        position: sticky;
+        top: 0;
+        margin: 0;
+        padding: 5vw 0;
+        list-style: none; }
+        #page #main > nav > ul > li a {
+          display: block;
+          padding: 15%;
+          text-decoration: none; }
+          #page #main > nav > ul > li a svg {
+            width: 6vw;
+            height: 6vw;
+            display: block;
+            margin: 0 auto 1vw; }
+          #page #main > nav > ul > li a > span {
+            display: block;
+            font-size: 60%;
+            text-transform: uppercase;
+            text-align: center; }
+    #page #main #content {
+      -webkit-box-flex: 0;
+          -ms-flex: 0 0 100%;
+              flex: 0 0 100%;
+      position: relative;
+      left: -15vw;
+      width: 100%;
+      padding: 2vw 0 0; }
