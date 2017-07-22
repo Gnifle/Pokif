@@ -92,7 +92,9 @@ class PokemonSpecies extends Eloquent {
 	 *
 	 * @return string|array The name (or a list of names) for the Pokemon
 	 */
-	public function getNameAttribute( $language = 'active' ) {
+	public function getNameAttribute( $language = NULL ) {
+		
+		$language = $language ? $language : 'active';
 		
 		$query = DB::table( 'pokemon_species_names' )
 		           ->where( 'pokemon_species_id', $this->id );
@@ -113,6 +115,44 @@ class PokemonSpecies extends Eloquent {
 			default:
 				return $query->where( 'local_language_id', $language )
 				             ->value( 'name' );
+		}
+	}
+	
+	/**
+	 * @param string $language The language in which to get the Pokemon name. Defaults to 'active' language. Options
+	 *                         are:
+	 *                         - 'active'  => Get the Pokemon in the language currently active on the site
+	 *                         - 'all'     => A collection of names by language
+	 *                         - 'default' => Get the Pokemon name in the default language.
+	 *                         - $locale   => Get the Pokemon name in an ISO639-1 valid locale
+	 *
+	 * @see https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes
+	 *
+	 * @return string|array The genus (classification) for the Pokemon
+	 */
+	public function getGenusAttribute( $language = NULL ) {
+		
+		$language = $language ? $language : 'active';
+		
+		$query = DB::table( 'pokemon_species_names' )
+		           ->where( 'pokemon_species_id', $this->id );
+		
+		switch( $language ) {
+			
+			case 'all':
+				return $query->value( 'genus' );
+			
+			case 'default':
+				return $query->where( 'local_language_id', Lang::getLocale() )
+				             ->value( 'genus' );
+			
+			case 'active':
+				return $query->where( 'local_language_id', Language::active() )
+				             ->value( 'genus' );
+			
+			default:
+				return $query->where( 'local_language_id', $language )
+				             ->value( 'genus' );
 		}
 	}
 }

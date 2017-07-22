@@ -128,4 +128,73 @@ class Sprite extends Model {
 		
 		return $sprite_list;
 	}
+	
+	/**
+	 * Returns the absolute URL for a sprite of a given type and name. If no valid type is given, returns a placeholder.
+	 * TODO: Make the function actually return a placeholder instead of an empty string.
+	 * TODO: Create generic placeholder image.
+	 *
+	 * @param object $sprites An object containing sprite info as key-value pairs..
+	 * @param        $type The type of sprite to get, e.g. Pokemon or Items.
+	 * @param string $name (optional) The name of the specific sprite to get. Defaults to 'default'.
+	 *
+	 * @return string The absolute URL for the given asset
+	 */
+	public static function url( $sprites, $type, $name = 'default' ) {
+		
+		switch( $type ) {
+			
+			case 'pokemon':
+				return self::pokemonSpriteUrl( $sprites, $name );
+			
+			case 'item':
+				return asset( "images/sprites/items/{$sprites->{$name}}.png" );
+			
+			default:
+				return ''; // TODO: Replace with placeholder
+		}
+	}
+	
+	/**
+	 * Returns the absolute URL for a Pokemon sprite with a given name
+	 *
+	 * @param $sprites
+	 * @param $name
+	 *
+	 * @return string
+	 */
+	public static function pokemonSpriteUrl( $sprites, $name ) {
+		
+		if( ! isset( $sprites->{$name} ) ) {
+			
+			return '';
+		}
+		
+		if( file_exists( public_path( "images/sprites/pokemon/{$sprites->{$name}}" ) ) ) {
+			
+			return asset( "images/sprites/pokemon/{$sprites->{$name}}" );
+		}
+		
+		switch( $name ) {
+			
+			case 'front_default':
+			case 'front_female':
+				return asset( "images/sprites/pokemon/{$sprites->front_default}" );
+				
+			case 'front_shiny':
+			case 'front_shiny_female':
+				return asset( "images/sprites/pokemon/{$sprites->front_shiny}" );
+			
+			case 'back_default':
+			case 'back_female':
+				return asset( "images/sprites/pokemon/{$sprites->back_default}" );
+				
+			case 'back_shiny':
+			case 'back_shiny_female':
+				return asset( "images/sprites/pokemon/{$sprites->back_shiny}" );
+				
+			default:
+				return '';
+		}
+	}
 }

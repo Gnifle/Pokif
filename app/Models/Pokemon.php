@@ -4,6 +4,7 @@ namespace App\Models;
 
 use App\Models\EggGroup;
 use Eloquent;
+use DB;
 use Illuminate\Support\Collection;
 
 /**
@@ -112,6 +113,24 @@ class Pokemon extends Eloquent {
 	public function getNameAttribute() {
 		
 		return $this->species->name;
+	}
+	
+	
+	public function getSpritesAttribute() {
+		
+		$sprites = DB::table( 'pokemon_sprites' )
+		             ->where( 'pokemon_id', $this->id )
+		             ->value( 'sprites' );
+		
+		return json_decode( $sprites );
+	}
+	
+	/**
+	 * @return string The classification of the Pokemon (species)
+	 */
+	public function getClassificationAttribute() {
+		
+		return $this->species->genus;
 	}
 	
 	/**

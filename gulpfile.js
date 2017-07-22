@@ -67,6 +67,7 @@ gulp.task( 'watch', [ 'svgstore', 'libraries', 'browserSync', 'sass', 'js' ], fu
 	gulp.watch( jsPath, [ 'js' ] );
 	
 	gulp.watch( 'resources/views/**/*.blade.php', browserSync.reload );
+	gulp.watch( 'app/**/*.php', browserSync.reload );
 	gulp.watch( 'resources/assets/js/**/*.js', browserSync.reload );
 } );
 
