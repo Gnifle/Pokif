@@ -102,8 +102,10 @@ class PokemonSpecies extends Eloquent {
 		switch( $language ) {
 			
 			case 'all':
-				return $query->join('languages', 'local_language_id', '=', 'id')
-				             ->select( 'name AS value', 'identifier AS locale' )
+				return $query->join( 'languages', 'pokemon_species_names.local_language_id', '=', 'languages.id' )
+				             ->join( 'language_names', 'languages.id', '=', 'language_names.language_id' )
+				             ->where( 'language_names.local_language_id', '=', Language::active() )
+				             ->select( 'pokemon_species_names.name AS value', 'languages.identifier AS locale', 'language_names.name AS locale_name' )
 				             ->get();
 			
 			case 'default':
@@ -142,8 +144,10 @@ class PokemonSpecies extends Eloquent {
 		switch( $language ) {
 			
 			case 'all':
-				return $query->join('languages', 'local_language_id', '=', 'id')
-				             ->select( 'genus AS value', 'identifier AS locale' )
+				return $query->join( 'languages', 'pokemon_species_names.local_language_id', '=', 'languages.id' )
+				             ->join( 'language_names', 'languages.id', '=', 'language_names.language_id' )
+				             ->where( 'language_names.local_language_id', '=', Language::active() )
+				             ->select( 'pokemon_species_names.genus AS value', 'languages.identifier AS locale', 'language_names.name AS locale_name' )
 				             ->get();
 			
 			case 'default':

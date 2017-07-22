@@ -21,11 +21,10 @@
 	<p>Classification: {{ $pokemon->classification }}</p>
 	{{-- Other names --}}
 	<p>
-		{{ var_dump( $pokemon->name( 'all' ) ) }}
 		<ul>
 			@foreach( $pokemon->name( 'all' ) as $name )
 			
-				<li>{{ $name->locale }}: {{ $name->value }}</li>
+				<li>{{ $name->locale_name }} ({{ $name->locale }}): {{ $name->value }}</li>
 				
 			@endforeach
 		</ul>
