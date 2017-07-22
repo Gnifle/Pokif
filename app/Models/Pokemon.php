@@ -5,6 +5,7 @@ namespace App\Models;
 use App\Models\EggGroup;
 use Eloquent;
 use DB;
+use Config;
 use Illuminate\Support\Collection;
 
 /**
@@ -138,6 +139,25 @@ class Pokemon extends Eloquent {
 	public function getClassificationAttribute() {
 		
 		return $this->species->genus;
+	}
+	
+	public function getDexEntriesAttribute() {
+
+//		return [ 'National' => 156 ];
+		
+		$dex_entries = [];
+		
+		$entries = DB::table( 'pokemon_dex_numbers' )
+		             ->join( 'pokedexes', 'pokemon_dex_numbers.pokedex_id', '=', 'pokedexes.id' )
+		             ->join( 'pokedex_prose', 'pokedex_prose.pokedex_id', '=', 'pokedexes.id' )
+                     ->where( 'pokemon_dex_numbers.species_id', '=', $this->species_id )
+                     ->where( 'pokedexes.region_id', '=', Config::get( 'generation' ) )
+                     ->select( 'pokemon_dex_numbers.pokedex_number AS number' )
+		             ->get();
+		
+		var_dump( $entries );
+		
+		return $dex_entries;
 	}
 	
 	/**

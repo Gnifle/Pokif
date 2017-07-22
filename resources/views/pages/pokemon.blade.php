@@ -21,6 +21,7 @@
 	<p>Classification: {{ $pokemon->classification }}</p>
 	{{-- Other names --}}
 	<p>
+		Names in other languages:
 		<ul>
 			@foreach( $pokemon->name( 'all' ) as $name )
 			
@@ -30,6 +31,16 @@
 		</ul>
 	</p>
 	{{-- Pokedex entries --}}
+	<p>
+		Dex entries:
+		<ul>
+			@foreach( $pokemon->dex_entries as $dex_name => $dex_number )
+				
+				<li>{{ $dex_name }}: #{{ $dex_number }}</li>
+				
+			@endforeach
+		</ul>
+	</p>
 	{{-- Gender ratio --}}
 	{{-- Type(s) --}}
 	{{-- Height --}}
