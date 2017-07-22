@@ -3,7 +3,7 @@
 @extends('layouts.pokif')
 
 @section('content')
-
+	
 	{{-- Name --}}
 	<p>Name: {{ $pokemon->name }}</p>
 	{{-- Picture --}}
@@ -20,6 +20,16 @@
 	{{-- Classification --}}
 	<p>Classification: {{ $pokemon->classification }}</p>
 	{{-- Other names --}}
+	<p>
+		{{ var_dump( $pokemon->name( 'all' ) ) }}
+		<ul>
+			@foreach( $pokemon->name( 'all' ) as $name )
+			
+				<li>{{ $name->locale }}: {{ $name->value }}</li>
+				
+			@endforeach
+		</ul>
+	</p>
 	{{-- Pokedex entries --}}
 	{{-- Gender ratio --}}
 	{{-- Type(s) --}}

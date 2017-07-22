@@ -99,6 +99,11 @@ class Pokemon extends Eloquent {
 		return $this->hasOne( PokemonForm::class );
 	}
 	
+	public function name( $language ) {
+		
+		return $this->species->getNameAttribute( $language );
+	}
+	
 	/**
 	 * @return int The number (ID) of the Pokemon
 	 */
@@ -115,7 +120,9 @@ class Pokemon extends Eloquent {
 		return $this->species->name;
 	}
 	
-	
+	/**
+	 * @return object The list of sprites for the Pokemon
+	 */
 	public function getSpritesAttribute() {
 		
 		$sprites = DB::table( 'pokemon_sprites' )
