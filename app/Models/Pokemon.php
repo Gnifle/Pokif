@@ -143,19 +143,22 @@ class Pokemon extends Eloquent {
 	
 	public function getDexEntriesAttribute() {
 
-//		return [ 'National' => 156 ];
-		
 		$dex_entries = [];
 		
 		$entries = DB::table( 'pokemon_dex_numbers' )
 		             ->join( 'pokedexes', 'pokemon_dex_numbers.pokedex_id', '=', 'pokedexes.id' )
 		             ->join( 'pokedex_prose', 'pokedex_prose.pokedex_id', '=', 'pokedexes.id' )
-                     ->where( 'pokemon_dex_numbers.species_id', '=', $this->species_id )
-                     ->where( 'pokedexes.region_id', '=', Config::get( 'generation' ) )
-                     ->select( 'pokemon_dex_numbers.pokedex_number AS number' )
+		             ->where( 'pokemon_dex_numbers.species_id', '=', $this->species_id )
+		             ->where( 'pokedexes.region_id', '=', Config::get( 'generation' ) )
+		             ->where( 'pokedex_prose.local_language_id', '=', Language::active() )
+		             ->orWhere( 'pokedex_prose.local_language_id', '=', 'en' )
+		             ->select( 'pokemon_dex_numbers.pokedex_number AS number', 'pokedex_prose.name AS pokedex_name' )
 		             ->get();
 		
-		var_dump( $entries );
+		foreach( $entries as $entry ) {
+			
+			$dex_entries[ $entry->pokedex_name ] = $entry->number;
+		}
 		
 		return $dex_entries;
 	}
