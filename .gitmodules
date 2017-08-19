@@ -1,0 +1,3 @@
+[submodule "laradock-pokif"]
+	path = laradock-pokif
+	url = https://github.com/Laradock/laradock.git
